@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="types.h" path="D:\WI20\CSE237C\FinalProject\pooling\types.h"/>
+    <originFiles name="maxpool_Alg.cpp" path="D:\WI20\CSE237C\FinalProject\pooling\maxpool_Alg.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="maxpool_tb.cpp" path="D:\WI20\CSE237C\FinalProject\pooling\maxpool_tb.cpp"/>
+    <originFiles name="conv1_out_7.dat" path="D:\WI20\CSE237C\FinalProject\pooling\conv1_out_7.dat"/>
+    <originFiles name="pool1_out_7.dat" path="D:\WI20\CSE237C\FinalProject\pooling\pool1_out_7.dat"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

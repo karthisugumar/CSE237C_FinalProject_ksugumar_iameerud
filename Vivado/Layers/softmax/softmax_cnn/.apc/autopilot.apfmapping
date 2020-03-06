@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="types.h" path="D:\WI20\CSE237C\FinalProject\softmax\types.h"/>
+    <originFiles name="softmax_Alg.cpp" path="D:\WI20\CSE237C\FinalProject\softmax\softmax_Alg.cpp"/>
+    <originFiles name="expTable.h" path="D:\WI20\CSE237C\FinalProject\softmax\expTable.h"/>
+  </source>
+  <testbench>
+    <originFiles name="softmax_tb.cpp" path="D:\WI20\CSE237C\FinalProject\softmax\softmax_tb.cpp"/>
+    <originFiles name="softmax_in.dat" path="D:\WI20\CSE237C\FinalProject\softmax\softmax_in.dat"/>
+    <originFiles name="softmax_out.dat" path="D:\WI20\CSE237C\FinalProject\softmax\softmax_out.dat"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="conv2d_Alg_pad.cpp" path="D:\WI20\CSE237C\FinalProject\convolution\conv2d_Alg_pad.cpp"/>
+    <originFiles name="types.h" path="D:\WI20\CSE237C\FinalProject\convolution\types.h"/>
+  </source>
+  <testbench>
+    <originFiles name="MNIST_in_7.dat" path="D:\WI20\CSE237C\FinalProject\convolution\MNIST_in_7.dat"/>
+    <originFiles name="conv1_bias.dat" path="D:\WI20\CSE237C\FinalProject\convolution\conv1_bias.dat"/>
+    <originFiles name="conv1_kernel.dat" path="D:\WI20\CSE237C\FinalProject\convolution\conv1_kernel.dat"/>
+    <originFiles name="conv1_out_7.dat" path="D:\WI20\CSE237C\FinalProject\convolution\conv1_out_7.dat"/>
+    <originFiles name="conv2d_tb.cpp" path="D:\WI20\CSE237C\FinalProject\convolution\conv2d_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

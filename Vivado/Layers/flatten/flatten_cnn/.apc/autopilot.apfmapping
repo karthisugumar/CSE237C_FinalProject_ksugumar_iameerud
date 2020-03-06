@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="flatten_Alg.cpp" path="D:\WI20\CSE237C\FinalProject\flatten\flatten_Alg.cpp"/>
+    <originFiles name="flatten.h" path="D:\WI20\CSE237C\FinalProject\flatten\flatten.h"/>
+  </source>
+  <testbench>
+    <originFiles name="flatten_tb.cpp" path="D:\WI20\CSE237C\FinalProject\flatten\flatten_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

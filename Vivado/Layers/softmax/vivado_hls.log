@@ -1,0 +1,54 @@
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Fri Mar 06 01:39:32 -0800 2020
+INFO: [HLS 200-10] In directory 'D:/WI20/CSE237C/FinalProject/softmax'
+Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn/solution1/csim.tcl'
+INFO: [HLS 200-10] Opening project 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn'.
+INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../softmax_tb.cpp in debug mode
+   Generating csim.exe
+In file included from D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
+                 from ../../../../types.h:4,
+                 from ../../../../softmax_tb.cpp:10:
+D:/Xilinx/Vivado/2019.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
+                 from ../../../../types.h:4,
+                 from ../../../../softmax_tb.cpp:10:
+D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+IN: 1.36221
+IN: -1.85514
+IN: 1.14707
+IN: 0.516765
+IN: 0.650405
+IN: 1.14236
+IN: 0.642326
+IN: -0.499403
+IN: -1.09069
+IN: -1.14067
+OUT: 0.222288
+OUT: 0.0100139
+OUT: 0.181994
+OUT[2Kvivado_hls> [12C[2Kvivado_hls> e[13C[2Kvivado_hls> ex[14C[2Kvivado_hls> exi[15C[2Kvivado_hls> exit[16C
+INFO: [Common 17-206] Exiting vivado_hls at Fri Mar  6 02:13:59 2020...
+------------
+*******************************************
+PASS: The output matches the golden output!
+*******************************************
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
