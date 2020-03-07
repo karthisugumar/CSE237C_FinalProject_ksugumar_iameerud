@@ -1,0 +1,137 @@
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Fri Mar 06 19:05:34 -0800 2020
+INFO: [HLS 200-10] In directory 'D:/WI20/CSE237C/FinalProject/fc'
+Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/fc/fc_cnn/solution1/csim.tcl'
+INFO: [HLS 200-10] Opening project 'D:/WI20/CSE237C/FinalProject/fc/fc_cnn'.
+INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/fc/fc_cnn/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+make: 'csim.exe' is up to date.
+OUT: 1.82485
+OUT: 9.25616
+OUT: -6.15857
+OUT: -3.36466
+OUT: 8.24693
+OUT: -9.21428
+OUT: -2.03773
+OUT: 4.56706
+OUT: -5.01368
+OUT: 6.14256
+OUT: -7.01764
+OUT: -9.186
+OUT: -0.814159
+OUT: -7.69278
+OUT: 4.32865
+OUT: 4.7727
+OUT: 3.69467
+OUT: -4.43335
+OUT: -3.57969
+OUT: 3.74595
+OUT: -4.13541
+OUT: 2.65135
+OUT: 3.23761
+OUT: 6.89406
+OUT: 2.57581
+OUT: 0.684586
+OUT: -0.985772
+OUT: -4.6474
+OUT: -5.72335
+OUT: -3.92
+OUT: 3.99951
+OUT: -2.08645
+OUT: -2.55743
+OUT: 1.8012
+OUT: 0.304058
+OUT: -8.52975
+OUT: -7.6048
+OUT: -4.49892
+OUT: -5.75268
+OUT: -5.60762
+OUT: -3.76265
+OUT: -2.36373
+OUT: 4.41317
+OUT: -6.51888
+OUT: 2.28399
+OUT: 5.91728
+OUT: 5.85191
+OUT: -3.03331
+OUT: 8.37173
+OUT: -3.00876
+OUT: 13.2294
+OUT: -0.23215
+OUT: -6.93186
+OUT: 4.78016
+OUT: 9.20482
+OUT: 4.65599
+OUT: -2.0244
+OUT: 7.63888
+OUT: -1.67793
+OUT: 8.19619
+OUT: 3.95715
+OUT: 5.45991
+OUT: 3.88457
+OUT: 11.0485
+OUT: -3.30127
+OUT: 2.34917
+OUT: -1.4106
+OUT: -7.28451
+OUT: -10.6872
+OUT: -6.44952
+OUT: -2.90137
+OUT: 1.37118
+OUT: 0.482368
+OUT: 2.06129
+OUT: -3.40073
+OUT: 1.89462
+OUT: 5.34821
+OUT: -1.36646
+OUT: 2.38818
+OUT: 5.12277
+OUT: -2.37497
+OUT: -2.14471
+OUT: 2.42717
+OUT: -6.56484
+OUT: -0.614054
+OUT: -2.7074
+OUT: 5.37802
+OUT: -0.735959
+OUT: -2.41979
+OUT: 2.33882
+OUT: 0.63741
+OUT: -4.48978
+OUT: 0.746864
+OUT: -0.607507
+OUT: -7.65397
+OUT: -4.42522
+OUT: -8.95724
+OUT: 9.3524
+OUT: 6.62311
+OUT: 2.61156
+OUT: 5.19446
+OUT: 2.09161
+OUT: 2.82683
+OUT: -1.78636
+OUT: -1.32222
+OUT: 8.28511
+OUT: -0.426577
+OUT: 5.99904
+OUT: -5.74884
+OUT: -5.41737
+OUT: -1.31961
+OUT: 4.2176
+OUT: 9.23587
+OUT: -2.00302
+OUT: -3.35001
+OUT: 3.37975
+OUT: 5.08896
+OUT: -0.6009
+OUT: -6.486
+OUT: -3.98948
+----------------------------------------------
+   RMSE 0.000002
+----------------------------------------------
+*******************************************
+PASS: The output matches the gol[2Kvivado_hls> [12C[2Kvivado_hls> e[13C[2Kvivado_hls> ex[14C[2Kvivado_hls> exi[15C[2Kvivado_hls> exit[16C
+INFO: [Common 17-206] Exiting vivado_hls at Fri Mar  6 19:21:03 2020...

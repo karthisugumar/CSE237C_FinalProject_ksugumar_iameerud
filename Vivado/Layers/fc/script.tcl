@@ -6,8 +6,12 @@
 open_project fc_cnn
 set_top fc
 add_files fc_Alg.cpp
-add_files types.h
+add_files fc.h
 add_files -tb fc_tb.cpp
+add_files -tb fc_kernel_in.dat
+add_files -tb fc_bias_in.dat
+add_files -tb fc_in.dat
+add_files -tb fc_out.dat
 # add_files -tb fc_in.dat
 # add_files -tb fc_out.dat
 open_solution "solution1"

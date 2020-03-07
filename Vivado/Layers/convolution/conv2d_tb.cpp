@@ -34,7 +34,7 @@ int main()
 {
     //int r,c,s;
     float temp;
-    DTYPE img[NUM_INCHAN][IN_ROWS][IN_COLS], prediction[10];
+    DTYPE img[NUM_INCHAN][IN_ROWS][IN_COLS];
     float gold;
     FILE *fp;
 
@@ -42,44 +42,46 @@ int main()
     DTYPE out[NUM_OUTCHAN][OUT_ROWS][OUT_COLS];
     DTYPE bias[NUM_OUTCHAN];
 
-    fp = fopen("conv1_out_7.dat", "r");
-    for(int r=0; r < IN_ROWS; r++) {
-        for(int c=0; c < IN_COLS; c++) {
-        	fscanf(fp, "%f\n", &temp);
-        img[0][r][c] = temp;
-        }
+    fp = fopen("conv1_in.dat", "r");
+    for(int ifm=0; ifm < NUM_INCHAN; ifm++) {
+		for(int r=0; r < IN_ROWS; r++) {
+			for(int c=0; c < IN_COLS; c++) {
+				fscanf(fp, "%f\n", &temp);
+			img[ifm][r][c] = temp;
+			}
+		}
     }
     fclose(fp);
 
 
     fp = fopen("conv1_kernel.dat", "r");
-    for(int ofm=0; ofm < 6; ofm++) {
+    for(int ofm=0; ofm < NUM_OUTCHAN; ofm++) {
+    	for(int ifm=0; ifm < NUM_INCHAN; ifm++) {
 		for(int r=0; r < KSIZE; r++) {
 			for(int c=0; c < KSIZE; c++) {
 				fscanf(fp, "%f\n", &temp);
-//				cout << "KERNEL: " << temp << endl;
-			filt[ofm][0][r][c] = temp;
+			filt[ofm][ifm][r][c] = temp;
 			}
 		}
+    	}
     }
     fclose(fp);
 
     fp = fopen("conv1_bias.dat", "r");
     for(int r=0; r < NUM_OUTCHAN; r++) {
         fscanf(fp, "%f\n", &temp);
- //       cout << "BIAS: " << temp << endl;
         bias[r] = temp;
     }
     fclose(fp);
 
-    conv2d(img, filt, out, bias);
+    conv2d(img, filt, bias, out);
 
-    fp = fopen("conv1_out_7.dat", "r");
-    for(int ofm=0; ofm < 6; ofm++) {
+    fp = fopen("conv1_out.dat", "r");
+    for(int ofm=0; ofm < NUM_OUTCHAN; ofm++) {
     	for(int r=0; r < OUT_ROWS; r++) {
 			for(int c=0; c < OUT_COLS; c++) {
 				fscanf(fp, "%f\n", &temp);
-				cout << "OUT: " << temp << endl;
+				cout << "OUT: " << out[ofm][r][c] << endl;
 			rmse.add_value(out[ofm][r][c] - temp);
         	}
     	}

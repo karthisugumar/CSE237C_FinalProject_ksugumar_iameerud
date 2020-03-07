@@ -7,8 +7,7 @@
 
 using namespace std;
 
-#include "types.h"
-
+#include "fc.h"
 
 struct Rmse
 {
@@ -37,21 +36,38 @@ int main()
     float gold;
     FILE *fp;
 
-    DTYPE in[PREDS];
-    DTYPE out[PREDS];
+    DTYPE in[IN_SIZE];
+    DTYPE kernel[OUT_SIZE][IN_SIZE];
+    DTYPE bias[OUT_SIZE];
+    DTYPE out[OUT_SIZE];
     
-    fp = fopen("softmax_in.dat", "r");
-	for(int p=0; p<PREDS; p++) {
+    fp = fopen("fc_bias_in.dat", "r");
+	for(int p=0; p<OUT_SIZE; p++) {
 		fscanf(fp, "%f\n", &temp);
-		cout << "IN: " << temp << endl;
-	in[p] = temp;
+	   bias[p] = temp;
 	}
     fclose(fp);
 
-    softmax(in, out);
+    fp = fopen("fc_kernel_in.dat", "r");
+    for(int p=0; p<OUT_SIZE; p++) {
+        for(int l=0; l<IN_SIZE; l++) {
+        fscanf(fp, "%f\n", &temp);
+        kernel[p][l] = temp;
+        }
+    }
+    fclose(fp);
 
-    fp = fopen("softmax_out.dat", "r");
-	for(int p=0; p < PREDS; p++) {
+    fp = fopen("fc_in.dat", "r");
+    for(int p=0; p<IN_SIZE; p++) {
+        fscanf(fp, "%f\n", &temp);
+       in[p] = temp;
+    }
+    fclose(fp);
+
+    fc(in, kernel, bias, out);
+
+    fp = fopen("fc_out.dat", "r");
+	for(int p=0; p < OUT_SIZE; p++) {
 		fscanf(fp, "%f\n", &temp);
 		cout << "OUT: " << out[p] << endl;
 	rmse.add_value(out[p] - temp);
