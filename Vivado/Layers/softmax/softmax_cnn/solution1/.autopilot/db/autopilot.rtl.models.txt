@@ -1,6 +1,0 @@
-softmax_fadd_32nsbkb
-softmax_fmul_32nscud
-softmax_fdiv_32nsdEe
-softmax_expTable
-softmax_idx
-softmax

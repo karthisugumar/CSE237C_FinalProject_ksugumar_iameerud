@@ -1,4 +1,0 @@
-conv2d_fadd_32ns_bkb
-conv2d_fmul_32ns_cud
-conv2d_acc_buf
-conv2d
