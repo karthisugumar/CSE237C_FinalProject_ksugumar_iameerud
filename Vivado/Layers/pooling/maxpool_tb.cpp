@@ -41,7 +41,7 @@ int main()
     DTYPE out[NUM_OUTCHAN][OUT_ROWS][OUT_COLS];
     
 
-    fp = fopen("conv1_out_7.dat", "r");
+    fp = fopen("pool_in.dat", "r");
     for(int ofm=0; ofm < NUM_INCHAN; ofm++) {
 		for(int r=0; r < IN_ROWS; r++) {
 			for(int c=0; c < IN_COLS; c++) {
@@ -55,7 +55,7 @@ int main()
 
     maxpool(in, out);
 
-    fp = fopen("pool1_out_7.dat", "r");
+    fp = fopen("pool_out.dat", "r");
     for(int ofm=0; ofm < NUM_OUTCHAN; ofm++) {
     	for(int r=0; r < OUT_ROWS; r++) {
 			for(int c=0; c < OUT_COLS; c++) {

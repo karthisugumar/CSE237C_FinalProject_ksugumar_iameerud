@@ -8,6 +8,8 @@ set_top maxpool
 add_files maxpool_Alg.cpp
 add_files types.h
 add_files -tb maxpool_tb.cpp
+add_files -tb pool_in.dat
+add_files -tb pool_out.dat
 open_solution "solution1"
 set_part  {xc7z020clg400-1}
 create_clock -period 10
