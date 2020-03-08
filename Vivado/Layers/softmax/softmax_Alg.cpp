@@ -10,11 +10,13 @@ void softmax(DTYPE in[PREDS], DTYPE out[PREDS])
 	int idx[PREDS];
 
 	DEN: for(int p=0; p<PREDS; p++){
+#pragma HLS PIPELINE
 		idx[p] = (RES>>1) + (int)(in[p] * 10);
 		denom+= expTable[idx[p]];
 	}//DEN
 
 	OUT: for(int p=0; p<PREDS; p++){
+#pragma HLS PIPELINE
 		out[p] = expTable[idx[p]]/denom;
 	}//OUT
 }

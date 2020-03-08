@@ -43,7 +43,7 @@ int main()
     fp = fopen("softmax_in.dat", "r");
 	for(int p=0; p<PREDS; p++) {
 		fscanf(fp, "%f\n", &temp);
-		cout << "IN: " << temp << endl;
+		//cout << "IN: " << temp << endl;
 	in[p] = temp;
 	}
     fclose(fp);
@@ -53,7 +53,7 @@ int main()
     fp = fopen("softmax_out.dat", "r");
 	for(int p=0; p < PREDS; p++) {
 		fscanf(fp, "%f\n", &temp);
-		cout << "OUT: " << out[p] << endl;
+		//cout << "OUT: " << out[p] << endl;
 	rmse.add_value(out[p] - temp);
 	}
     fclose(fp);

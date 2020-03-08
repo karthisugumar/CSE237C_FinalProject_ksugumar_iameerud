@@ -1,54 +1,84 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Fri Mar 06 01:39:32 -0800 2020
+INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Sat Mar 07 21:01:33 -0800 2020
 INFO: [HLS 200-10] In directory 'D:/WI20/CSE237C/FinalProject/softmax'
-Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn/solution1/csim.tcl'
+Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn/solution2_opt1/csynth.tcl'
 INFO: [HLS 200-10] Opening project 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn'.
-INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn/solution1'.
+INFO: [HLS 200-10] Adding design file 'expTable.h' to the project
+INFO: [HLS 200-10] Adding design file 'softmax_Alg.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'types.h' to the project
+INFO: [HLS 200-10] Adding test bench file 'softmax_in.dat' to the project
+INFO: [HLS 200-10] Adding test bench file 'softmax_out.dat' to the project
+INFO: [HLS 200-10] Adding test bench file 'softmax_tb.cpp' to the project
+INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/softmax/softmax_cnn/solution2_opt1'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../softmax_tb.cpp in debug mode
-   Generating csim.exe
-In file included from D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
-                 from ../../../../types.h:4,
-                 from ../../../../softmax_tb.cpp:10:
-D:/Xilinx/Vivado/2019.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
-                 from ../../../../types.h:4,
-                 from ../../../../softmax_tb.cpp:10:
-D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-IN: 1.36221
-IN: -1.85514
-IN: 1.14707
-IN: 0.516765
-IN: 0.650405
-IN: 1.14236
-IN: 0.642326
-IN: -0.499403
-IN: -1.09069
-IN: -1.14067
-OUT: 0.222288
-OUT: 0.0100139
-OUT: 0.181994
-OUT[2Kvivado_hls> [12C[2Kvivado_hls> e[13C[2Kvivado_hls> ex[14C[2Kvivado_hls> exi[15C[2Kvivado_hls> exit[16C
-INFO: [Common 17-206] Exiting vivado_hls at Fri Mar  6 02:13:59 2020...
-------------
-*******************************************
-PASS: The output matches the golden output!
-*******************************************
-INFO: [SIM 211-1] CSim done with 0 errors.
-INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'softmax_Alg.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 185.059 ; gain = 93.500
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 185.059 ; gain = 93.500
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:02 ; elapsed = 00:00:14 . Memory (MB): peak = 190.211 ; gain = 98.652
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'softmax' (softmax_Alg.cpp:14) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:02 ; elapsed = 00:00:15 . Memory (MB): peak = 211.410 ; gain = 119.852
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (r:/builds/2019.1/continuous/2019_05_24_2552052/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'softmax' (softmax_Alg.cpp:14) automatically.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:15 . Memory (MB): peak = 259.922 ; gain = 168.363
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:15 . Memory (MB): peak = 270.688 ; gain = 179.129
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'softmax' ...
+WARNING: [SYN 201-107] Renaming port name 'softmax/in' to 'softmax/in_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'softmax/out' to 'softmax/out_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'softmax' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'DEN'.
+WARNING: [SCHED 204-68] Unable to enforce a carried constraint (II = 1)
+   between 'fadd' operation ('denom', softmax_Alg.cpp:15) and 'fadd' operation ('denom', softmax_Alg.cpp:15).
+WARNING: [SCHED 204-68] Unable to enforce a carried constraint (II = 2)
+   between 'fadd' operation ('denom', softmax_Alg.cpp:15) and 'fadd' operation ('denom', softmax_Alg.cpp:15).
+WARNING: [SCHED 204-68] Unable to enforce a carried constraint (II = 3)
+   between 'fadd' operation ('denom', softmax_Alg.cpp:15) and 'fadd' operation ('denom', softmax_Alg.cpp:15).
+WARNING: [SCHED 204-68] Unable to enforce a carried constraint (II = 4)
+   between 'fadd' operation ('denom', softmax_Alg.cpp:15) and 'fadd' operation ('denom', softmax_Alg.cpp:15).
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 5, Depth = 13.
+INFO: [SCHED 204-61] Pipelining loop 'OUT'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 19.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 15.438 seconds; current allocated memory: 203.244 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.347 seconds; current allocated memory: 203.575 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'softmax' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'softmax/in_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'softmax/out_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'softmax' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'softmax_fadd_32ns_32ns_32_5_full_dsp_1' to 'softmax_fadd_32nsbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'softmax_fmul_32ns_32ns_32_4_max_dsp_1' to 'softmax_fmul_32nscud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'softmax_fdiv_32ns_32ns_32_16_1' to 'softmax_fdiv_32nsdEe' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'softmax_fadd_32nsbkb': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'softmax_fdiv_32nsdEe': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'softmax_fmul_32nscud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'softmax'.
+INFO: [HLS 200-111]  Elapsed time: 0.506 seconds; current allocated memory: 204.506 MB.
+INFO: [RTMG 210-279] Implementing memory 'softmax_expTable_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'softmax_idx_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:03 ; elapsed = 00:00:19 . Memory (MB): peak = 270.688 ; gain = 179.129
+INFO: [VHDL 208-304] Generating VHDL RTL for softmax.
+INFO: [VLOG 209-307] Generating Verilog RTL for softmax.
+INFO: [HLS 200-112] Total elapsed time: 18.978 seconds; peak allocated memory: 204.506 MB.

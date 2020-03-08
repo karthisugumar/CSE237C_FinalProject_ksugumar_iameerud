@@ -10,6 +10,7 @@ void maxpool(DTYPE in[NUM_INCHAN][IN_ROWS][IN_COLS],
 	OFM: for(int ofm=0; ofm<NUM_INCHAN; ofm++){
 		ROW: for(int r=0; r<IN_ROWS; r+=STRIDE){
 			COL: for(int c=0; c<IN_COLS; c+=STRIDE){
+#pragma HLS PIPELINE
 
 				K_ROW: for(int k_r=0; k_r<KSIZE; k_r++){
 					K_COL: for(int k_c=0; k_c<KSIZE; k_c++){

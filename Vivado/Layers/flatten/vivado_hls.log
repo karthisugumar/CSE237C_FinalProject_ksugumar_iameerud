@@ -1,463 +1,56 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Fri Mar 06 11:21:53 -0800 2020
+INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Sat Mar 07 21:23:40 -0800 2020
 INFO: [HLS 200-10] In directory 'D:/WI20/CSE237C/FinalProject/flatten'
-Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/flatten/flatten_cnn/solution1/csim.tcl'
+Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/flatten/flatten_cnn/solution3_opt2/csynth.tcl'
 INFO: [HLS 200-10] Opening project 'D:/WI20/CSE237C/FinalProject/flatten/flatten_cnn'.
-INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/flatten/flatten_cnn/solution1'.
+INFO: [HLS 200-10] Adding design file 'flatten_Alg.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'flatten.h' to the project
+INFO: [HLS 200-10] Adding test bench file 'flatten_tb.cpp' to the project
+INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/flatten/flatten_cnn/solution3_opt2'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../flatten_tb.cpp in debug mode
-   Compiling ../../../../flatten_Alg.cpp in debug mode
-   Generating csim.exe
-In file included from D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
-                 from ../../../../flatten.h:4,
-                 from ../../../../flatten_tb.cpp:10:
-D:/Xilinx/Vivado/2019.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
-                 from ../../../../flatten.h:4,
-                 from ../../../../flatten_tb.cpp:10:
-D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
-                 from ../../../../flatten.h:4,
-                 from ../../../../flatten_Alg.cpp:2:
-D:/Xilinx/Vivado/2019.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
-                 from ../../../../flatten.h:4,
-                 from ../../../../flatten_Alg.cpp:2:
-D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-OUT: 0
-----------------------------------------------
-   RMSE 0.000000
-----------------------------------------------
-*******************************************
-PASS: The output matches the golden output!
-*******************************************
-INFO: [SIM 211-1] CSim done with 0 errors.
-INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'flatten_Alg.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:12 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:12 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'ROW' (flatten_Alg.cpp:10) in function 'flatten' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'COL' (flatten_Alg.cpp:12) because its parent loop or function is pipelined.
+INFO: [HLS 200-489] Unrolling loop 'COL' (flatten_Alg.cpp:12) in function 'flatten' completely with a factor of 5.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:12 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [XFORM 203-541] Flattening a loop nest 'IFM' (flatten_Alg.cpp:9:45) in function 'flatten'.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:12 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'flatten' ...
+WARNING: [SYN 201-107] Renaming port name 'flatten/in' to 'flatten/in_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'flatten/out' to 'flatten/out_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'flatten' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'IFM_ROW'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('in_load_2', flatten_Alg.cpp:14) on array 'in_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'in_r'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 3, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 12.163 seconds; current allocated memory: 110.614 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.076 seconds; current allocated memory: 110.905 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'flatten' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'flatten/in_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'flatten/out_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'flatten' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'flatten'.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 111.497 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:02 ; elapsed = 00:00:13 . Memory (MB): peak = 185.320 ; gain = 93.758
+INFO: [VHDL 208-304] Generating VHDL RTL for flatten.
+INFO: [VLOG 209-307] Generating Verilog RTL for flatten.
+INFO: [HLS 200-112] Total elapsed time: 13.463 seconds; peak allocated memory: 111.497 MB.

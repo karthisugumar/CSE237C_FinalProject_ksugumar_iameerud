@@ -81,7 +81,7 @@ int main()
     	for(int r=0; r < OUT_ROWS; r++) {
 			for(int c=0; c < OUT_COLS; c++) {
 				fscanf(fp, "%f\n", &temp);
-				cout << "OUT: " << out[ofm][r][c] << endl;
+	//			cout << "OUT: " << out[ofm][r][c] << endl;
 			rmse.add_value(out[ofm][r][c] - temp);
         	}
     	}

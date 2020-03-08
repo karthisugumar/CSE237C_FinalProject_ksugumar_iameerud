@@ -56,7 +56,7 @@ int main()
     fp = fopen("flatten_out.dat", "r");
 	for(int p=0; p < OUT_SIZE; p++) {
 		fscanf(fp, "%f\n", &temp);
-		cout << "OUT: " << out[p] << endl;
+//		cout << "OUT: " << out[p] << endl;
 	rmse.add_value(out[p] - temp);
 	}
     fclose(fp);

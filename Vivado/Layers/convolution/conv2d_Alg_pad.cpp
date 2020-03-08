@@ -19,6 +19,7 @@ DTYPE data;
 		//Add Bias to accumulation buffer
 		ROW_CLR: for(int r=0; r<OUT_ROWS; r++){
 			COL_CLR: for(int c=0; c<OUT_COLS; c++){
+#pragma HLS PIPELINE
 				acc_buf[r][c]=bias[ofm];
 			}
 		}
@@ -26,6 +27,7 @@ DTYPE data;
 		IFM: for(int ifm=0; ifm<NUM_INCHAN; ifm++){
 			ROW: for(int r=0; r<OUT_ROWS; r++){
 				COL: for(int c=0; c<OUT_COLS; c++){
+#pragma HLS PIPELINE
 					acc=0;
 
 					K_ROW: for(int kr=0; kr<KSIZE; kr+=STRIDE){
@@ -49,6 +51,7 @@ DTYPE data;
 		//copy to output
 		ROW_CPY:for(int r=0;r<OUT_ROWS;r++){
           COL_CPY:for(int c=0;c<OUT_COLS;c++){
+#pragma HLS PIPELINE
             out[ofm][r][c] = acc_buf[r][c];
            	}
 		}

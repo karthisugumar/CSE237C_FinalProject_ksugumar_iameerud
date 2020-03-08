@@ -8,7 +8,9 @@ void flatten(DTYPE in[NUM_INCHAN][IN_ROWS][IN_COLS],
 
 	IFM: for(int ifm=0; ifm<NUM_INCHAN; ifm++){
 		ROW: for(int r=0; r<IN_ROWS; r++){
+#pragma HLS PIPELINE
 			COL: for(int c=0; c<IN_COLS; c++){
+#pragma HLS PIPELINE
 				out[idx++]=in[ifm][r][c];
 			}
 		}
