@@ -1,0 +1,55 @@
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Sun Mar 08 04:11:16 -0700 2020
+INFO: [HLS 200-10] In directory 'D:/WI20/CSE237C/FinalProject/relu_fc'
+Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/relu_fc/relu_cnn/solution2_opt1/csynth.tcl'
+INFO: [HLS 200-10] Opening project 'D:/WI20/CSE237C/FinalProject/relu_fc/relu_cnn'.
+INFO: [HLS 200-10] Adding design file 'relu_fc_Alg.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'types.h' to the project
+INFO: [HLS 200-10] Adding test bench file 'relu_fc_in.dat' to the project
+INFO: [HLS 200-10] Adding test bench file 'relu_fc_out.dat' to the project
+INFO: [HLS 200-10] Adding test bench file 'relu_fc_tb.cpp' to the project
+INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/relu_fc/relu_cnn/solution2_opt1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'relu_fc_Alg.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:17 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:17 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'relu' ...
+WARNING: [SYN 201-107] Renaming port name 'relu/in' to 'relu/in_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'relu/out' to 'relu/out_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'relu' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'OUT'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 20.311 seconds; current allocated memory: 110.037 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.18 seconds; current allocated memory: 110.185 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'relu' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'relu/in_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'relu/out_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'relu' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'relu_fcmp_32ns_32ns_1_2_1' to 'relu_fcmp_32ns_32bkb' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'relu_fcmp_32ns_32bkb': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'relu'.
+INFO: [HLS 200-111]  Elapsed time: 0.181 seconds; current allocated memory: 110.528 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:02 ; elapsed = 00:00:23 . Memory (MB): peak = 186.059 ; gain = 94.504
+INFO: [VHDL 208-304] Generating VHDL RTL for relu.
+INFO: [VLOG 209-307] Generating Verilog RTL for relu.
+INFO: [HLS 200-112] Total elapsed time: 22.679 seconds; peak allocated memory: 110.528 MB.
