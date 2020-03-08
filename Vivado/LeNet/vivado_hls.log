@@ -1,0 +1,51 @@
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Karthi' on host 'karthi' (Windows NT_amd64 version 6.2) on Sun Mar 08 14:13:32 -0700 2020
+INFO: [HLS 200-10] In directory 'D:/WI20/CSE237C/FinalProject/LeNet'
+Sourcing Tcl script 'D:/WI20/CSE237C/FinalProject/LeNet/lenet_cnn/solution1/csim.tcl'
+INFO: [HLS 200-10] Opening project 'D:/WI20/CSE237C/FinalProject/LeNet/lenet_cnn'.
+INFO: [HLS 200-10] Opening solution 'D:/WI20/CSE237C/FinalProject/LeNet/lenet_cnn/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../lenet_tb.cpp in debug mode
+   Generating csim.exe
+In file included from D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
+                 from ../../../../lenet.h:4,
+                 from ../../../../lenet_tb.cpp:10:
+D:/Xilinx/Vivado/2019.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2019.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2019.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2019.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2019.1/include/ap_fixed.h:54,
+                 from ../../../../lenet.h:4,
+                 from ../../../../lenet_tb.cpp:10:
+D:/Xilinx/Vivado/2019.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+PREDS: 0.999982
+PREDS: 5.66093e-013
+PREDS: 1.12533e-007
+PREDS: 5.64631e-012
+PREDS: 4.19372e-013
+PREDS: 1.86497e-009
+PREDS: 1.67014e-005
+PREDS: 2.81113e-013
+PREDS: 5.09581e-011
+PREDS: 1.51512e-006
+----------------------------------------------
+   RMSE 0.000001
+----------------------------------------------
+*******************************************
+PASS: The output matches the golden output!
+*******************************************
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
