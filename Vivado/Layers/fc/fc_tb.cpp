@@ -8,6 +8,9 @@
 using namespace std;
 
 #include "fc.h"
+#include "FC1_weights.h"
+#include "FC1_bias.h"
+
 
 struct Rmse
 {
@@ -37,25 +40,25 @@ int main()
     FILE *fp;
 
     DTYPE in[IN_SIZE];
-    DTYPE kernel[OUT_SIZE][IN_SIZE];
-    DTYPE bias[OUT_SIZE];
+    //DTYPE kernel[OUT_SIZE][IN_SIZE];
+    //DTYPE bias[OUT_SIZE];
     DTYPE out[OUT_SIZE];
     
-    fp = fopen("fc_bias_in.dat", "r");
-	for(int p=0; p<OUT_SIZE; p++) {
-		fscanf(fp, "%f\n", &temp);
-	   bias[p] = temp;
-	}
-    fclose(fp);
-
-    fp = fopen("fc_kernel_in.dat", "r");
-    for(int p=0; p<OUT_SIZE; p++) {
-        for(int l=0; l<IN_SIZE; l++) {
-        fscanf(fp, "%f\n", &temp);
-        kernel[p][l] = temp;
-        }
-    }
-    fclose(fp);
+//    fp = fopen("fc_bias_in.dat", "r");
+//	for(int p=0; p<OUT_SIZE; p++) {
+//		fscanf(fp, "%f\n", &temp);
+//	   bias[p] = temp;
+//	}
+//    fclose(fp);
+//
+//    fp = fopen("fc_kernel_in.dat", "r");
+//    for(int p=0; p<OUT_SIZE; p++) {
+//        for(int l=0; l<IN_SIZE; l++) {
+//        fscanf(fp, "%f\n", &temp);
+//        kernel[p][l] = temp;
+//        }
+//    }
+//    fclose(fp);
 
     fp = fopen("fc_in.dat", "r");
     for(int p=0; p<IN_SIZE; p++) {

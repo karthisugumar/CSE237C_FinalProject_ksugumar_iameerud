@@ -8,7 +8,8 @@
 using namespace std;
 
 #include "types.h"
-
+#include "C1_weights.h"
+#include "C1_bias.h"
 
 struct Rmse
 {
@@ -38,9 +39,9 @@ int main()
     float gold;
     FILE *fp;
 
-    DTYPE filt[NUM_OUTCHAN][NUM_INCHAN][KSIZE][KSIZE];
+  //  DTYPE filt[NUM_OUTCHAN][NUM_INCHAN][KSIZE][KSIZE];
     DTYPE out[NUM_OUTCHAN][OUT_ROWS][OUT_COLS];
-    DTYPE bias[NUM_OUTCHAN];
+ //   DTYPE bias[NUM_OUTCHAN];
 
     fp = fopen("conv1_in.dat", "r");
     for(int ifm=0; ifm < NUM_INCHAN; ifm++) {
@@ -54,27 +55,30 @@ int main()
     fclose(fp);
 
 
-    fp = fopen("conv1_kernel.dat", "r");
-    for(int ofm=0; ofm < NUM_OUTCHAN; ofm++) {
-    	for(int ifm=0; ifm < NUM_INCHAN; ifm++) {
-		for(int r=0; r < KSIZE; r++) {
-			for(int c=0; c < KSIZE; c++) {
-				fscanf(fp, "%f\n", &temp);
-			filt[ofm][ifm][r][c] = temp;
-			}
-		}
-    	}
-    }
-    fclose(fp);
+//    fp = fopen("conv1_kernel.dat", "r");
+//    for(int ofm=0; ofm < NUM_OUTCHAN; ofm++) {
+//    	for(int ifm=0; ifm < NUM_INCHAN; ifm++) {
+//		for(int r=0; r < KSIZE; r++) {
+//			for(int c=0; c < KSIZE; c++) {
+//				fscanf(fp, "%f\n", &temp);
+//			filt[ofm][ifm][r][c] = temp;
+//			}
+//		}
+//    	}
+//    }
+//    fclose(fp);
 
-    fp = fopen("conv1_bias.dat", "r");
-    for(int r=0; r < NUM_OUTCHAN; r++) {
-        fscanf(fp, "%f\n", &temp);
-        bias[r] = temp;
-    }
-    fclose(fp);
 
-    conv2d(img, filt, bias, out);
+//    fp = fopen("conv1_bias.dat", "r");
+//    for(int r=0; r < NUM_OUTCHAN; r++) {
+//        fscanf(fp, "%f\n", &temp);
+//        bias[r] = temp;
+//    }
+//    fclose(fp);
+
+   // filt = C1_weights;
+
+    conv2d(img, C1_weights, C1_biases, out);
 
     fp = fopen("conv1_out.dat", "r");
     for(int ofm=0; ofm < NUM_OUTCHAN; ofm++) {

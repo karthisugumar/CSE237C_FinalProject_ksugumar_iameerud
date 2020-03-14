@@ -17,7 +17,7 @@ void relu_R1(DTYPE in[C1_NUM_OUTCHAN][C1_OUT_ROWS][C1_OUT_COLS],
 			COL: for(int c=0; c<C1_OUT_COLS; c++){
 #pragma HLS PIPELINE
 				data = in[ofm][r][c];
-				out[ofm][r][c] = (data>0) ? data : 0;
+				out[ofm][r][c] = (data>0) ? data : (DTYPE)(0);
 			}//COL
 		}//ROW
 	}//OFM
@@ -37,7 +37,7 @@ void relu_R2(DTYPE in[C2_NUM_OUTCHAN][C2_OUT_ROWS][C2_OUT_COLS],
 			COL: for(int c=0; c<C2_OUT_COLS; c++){
 #pragma HLS PIPELINE
 				data = in[ofm][r][c];
-				out[ofm][r][c] = (data>0) ? data : 0;
+				out[ofm][r][c] = (data>0) ? data : (DTYPE)(0);
 			}//COL
 		}//ROW
 	}//OFM
@@ -53,7 +53,7 @@ void relu_R3(DTYPE in[FC1_OUT_SIZE],
 	OUT: for(int c=0; c<FC1_OUT_SIZE; c++){
 #pragma HLS PIPELINE
 		data = in[c];
-		out[c] = (data>0) ? data : 0;
+		out[c] = (data>0) ? data : (DTYPE)(0);
 	}//COL
 }
 
@@ -66,7 +66,7 @@ void relu_R4(DTYPE in[FC2_OUT_SIZE],
 	OUT: for(int c=0; c<FC2_OUT_SIZE; c++){
 #pragma HLS PIPELINE
 		data = in[c];
-		out[c] = (data>0) ? data : 0;
+		out[c] = (data>0) ? data : (DTYPE)(0);
 	}//COL
 }
 

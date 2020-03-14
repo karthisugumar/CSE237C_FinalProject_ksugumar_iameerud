@@ -9,7 +9,7 @@ const int IN_SIZE = 400;
 const int OUT_SIZE = 120;
 
 
-void fc(DTYPE in[IN_SIZE], DTYPE kernel[OUT_SIZE][IN_SIZE],
-		DTYPE bias[OUT_SIZE], DTYPE out[OUT_SIZE]);
+void fc(DTYPE in[IN_SIZE], const DTYPE kernel[OUT_SIZE][IN_SIZE],
+		const DTYPE bias[OUT_SIZE], DTYPE out[OUT_SIZE]);
 
 #endif

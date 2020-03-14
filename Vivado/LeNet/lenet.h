@@ -2,8 +2,16 @@
 #define __LENET__
 
 #include <ap_fixed.h>
+#include <ap_int.h>
 
 typedef float DTYPE;
+typedef float PARAM_TYPE;
+typedef float EXP_TYPE;
+
+//typedef ap_fixed<16,8> DTYPE;
+//typedef ap_fixed<12,3> PARAM_TYPE;
+//typedef ap_fixed<32,16> EXP_TYPE;
+
 
 //Common parameters
 const int C_STRIDE = 1; //Convolution Stride
@@ -22,8 +30,8 @@ const int C1_OUT_ROWS = 28;
 const int C1_OUT_COLS = 28;
 
 void conv2d_C1 (DTYPE in[C1_NUM_INCHAN][C1_IN_ROWS][C1_IN_COLS],
-		const DTYPE filt[C1_NUM_OUTCHAN][C1_NUM_INCHAN][C1_KSIZE][C1_KSIZE],
-		const DTYPE bias[C1_NUM_OUTCHAN],
+		const PARAM_TYPE filt[C1_NUM_OUTCHAN][C1_NUM_INCHAN][C1_KSIZE][C1_KSIZE],
+		const PARAM_TYPE bias[C1_NUM_OUTCHAN],
 		DTYPE out[C1_NUM_OUTCHAN][C1_OUT_ROWS][C1_OUT_COLS]);
 
 // R1 - relu 1
@@ -46,8 +54,8 @@ const int C2_OUT_COLS = 10;
 const int C2_NUM_OUTCHAN=16;
 
 void conv2d_C2 (DTYPE in[C1_NUM_OUTCHAN][C2_IN_ROWS][C2_IN_COLS],
-		const DTYPE filt[C2_NUM_OUTCHAN][C1_NUM_OUTCHAN][C2_KSIZE][C2_KSIZE],
-		const DTYPE bias[C2_NUM_OUTCHAN],
+		const PARAM_TYPE filt[C2_NUM_OUTCHAN][C1_NUM_OUTCHAN][C2_KSIZE][C2_KSIZE],
+		const PARAM_TYPE bias[C2_NUM_OUTCHAN],
 		DTYPE out[C2_NUM_OUTCHAN][C2_OUT_ROWS][C2_OUT_COLS]);
 
 // R2 - relu 2
@@ -69,8 +77,8 @@ void flatten_F(DTYPE in[C2_NUM_OUTCHAN][P2_OUT_ROWS][P2_OUT_COLS],
 
 // FC1 - Fully-Connected 1
 const int FC1_OUT_SIZE = 120;
-void fc_FC1(DTYPE in[F_OUT_SIZE], const DTYPE kernel[FC1_OUT_SIZE][F_OUT_SIZE],
-		const DTYPE bias[FC1_OUT_SIZE], DTYPE out[FC1_OUT_SIZE]);
+void fc_FC1(DTYPE in[F_OUT_SIZE], const PARAM_TYPE kernel[FC1_OUT_SIZE][F_OUT_SIZE],
+		const PARAM_TYPE bias[FC1_OUT_SIZE], DTYPE out[FC1_OUT_SIZE]);
 
 // R3 - relu 3
 //// Same as FC1
@@ -80,8 +88,8 @@ void relu_R3(DTYPE in[FC1_OUT_SIZE],
 
 // FC2 - Fully-Connected 2
 const int FC2_OUT_SIZE = 84;
-void fc_FC2(DTYPE in[FC1_OUT_SIZE], const DTYPE kernel[FC2_OUT_SIZE][FC1_OUT_SIZE],
-		const DTYPE bias[FC2_OUT_SIZE], DTYPE out[FC2_OUT_SIZE]);
+void fc_FC2(DTYPE in[FC1_OUT_SIZE], const PARAM_TYPE kernel[FC2_OUT_SIZE][FC1_OUT_SIZE],
+		const PARAM_TYPE bias[FC2_OUT_SIZE], DTYPE out[FC2_OUT_SIZE]);
 
 // R4 - relu 4
 //// Same as FC2
@@ -90,8 +98,8 @@ void relu_R4(DTYPE in[FC2_OUT_SIZE],
 
 // FC3 - Fully-Connected 3
 const int FC3_OUT_SIZE = 10;
-void fc_FC3(DTYPE in[FC2_OUT_SIZE], const DTYPE kernel[FC3_OUT_SIZE][FC2_OUT_SIZE],
-		const DTYPE bias[FC3_OUT_SIZE], DTYPE out[FC3_OUT_SIZE]);
+void fc_FC3(DTYPE in[FC2_OUT_SIZE], const PARAM_TYPE kernel[FC3_OUT_SIZE][FC2_OUT_SIZE],
+		const PARAM_TYPE bias[FC3_OUT_SIZE], DTYPE out[FC3_OUT_SIZE]);
 
 // SM - Softmax
 const int PREDS = 10;

@@ -94,7 +94,7 @@ int main()
     for(int p=0; p < PREDS; p++) {
 		fscanf(fp, "%f\n", &temp);
 		cout << "PREDS: " << out[p] << endl;
-	   rmse.add_value(out[p] - temp);
+	   rmse.add_value((float)(out[p]) - temp);
     }
     fclose(fp);
 

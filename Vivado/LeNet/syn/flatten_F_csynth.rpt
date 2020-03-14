@@ -3,11 +3,11 @@
 ================================================================
 == Vivado HLS Report for 'flatten_F'
 ================================================================
-* Date:           Sun Mar  8 14:26:39 2020
+* Date:           Sat Mar 14 11:28:21 2020
 
 * Version:        2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)
 * Project:        lenet_cnn
-* Solution:       solution2_opt
+* Solution:       solution6_convPipeline
 * Product family: zynq
 * Target device:  xc7z020-clg400-1
 
