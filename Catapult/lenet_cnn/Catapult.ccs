@@ -1,0 +1,24 @@
+//  Catapult HLS Synthesis 10.5/858548 (Beta Release) Sun Feb 16 19:01:19 PST 2020
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2020, All Rights Reserved.
+//                        UNPUBLISHED, LICENSED SOFTWARE.
+//             CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//                 PROPERTY OF MENTOR GRAPHICS OR ITS LICENSORS
+//  
+//  Running on Linux karthi@Karthi 4.4.0-18362-Microsoft x86_64 aol
+//  
+//  Package information: SIFLIBS v23.5_0.0, HLS_PKGS v23.5_0.0, 
+//                       SIF_TOOLKITS v23.5_0.0, SIF_XILINX v23.5_0.0, 
+//                       SIF_ALTERA v23.5_0.0, CCS_LIBS v23.5_0.0, 
+//                       CDS_PPRO v10.3c_2, CDS_DesigChecker v10.5_beta2, 
+//                       CDS_OASYS v19.1_3.7, CDS_PSR v19.2_0.9, 
+//                       DesignPad v2.78_1.0
+//  
+if {[info script] != {} && [file isdirectory [file rootname [info script]]]} {
+  project load [file rootname [info script]] 10.5
+} elseif { [file isdirectory /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult] } {
+  project load /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult 10.5
+} else {
+  error {unable to locate project directory 'Catapult'}
+}
+
