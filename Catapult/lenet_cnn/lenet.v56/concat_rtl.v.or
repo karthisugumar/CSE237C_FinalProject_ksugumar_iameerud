@@ -1,0 +1,279 @@
+## HLS OasysRTL synthesis script (/mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/concat_rtl.v.or)
+## Generated for stage extract
+
+# if {![catch ULicense_catapultFeaturesOnly msg]} then {puts "Limited access to Oasys features"; rename ::swig::ULicense_catapultFeaturesOnly {}}
+set_parameter time_units_for_reports ns
+set_design_effort -area 1 -timing 1 -hls_lib 0
+set_parameter useZeroWireLoad 1
+
+# CAT-22961: Workaround needed until we integrate the fix for OAS-12217
+set_parameter preserveConnectedEmptyModules true
+
+config_multi_process -local_host 1
+set enable_timing_reporting true
+
+puts "-- Note: Oasys-RTL Started"
+
+set_parameter max_loop_limit 10000
+## Set the variable for file path prefixing 
+set RTL_TOOL_SCRIPT_DIR /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/.
+set RTL_TOOL_SCRIPT_DIR [file dirname [file normalize [info script]]]
+puts "-- RTL_TOOL_SCRIPT_DIR is set to '$RTL_TOOL_SCRIPT_DIR' "
+set MGC_HOME /mnt/d/Ubuntu/Mgc_home
+
+## Initialize Oasys-HLS variables
+set hls_status 0
+
+proc run_cmd { cmd errstr } {
+  upvar hls_status hls_status
+  puts $cmd
+  set retVal {}
+  if { !$hls_status } {
+    if { [catch { set retVal [uplevel 1 [list eval $cmd] ] } ] } {
+      puts "Error: Unable to $errstr."
+      set hls_status 1
+    }
+  } else {
+    puts "Error: $errstr skipped due to previous errors."
+  }
+  set retVal
+}
+
+# Source custom OasysRTL script for specified stage
+# stage is one of: initial analyze synthesis reports final
+proc source_custom_script { stage } {
+   global env
+   if { [info exists env(OasysRTL_CustomScriptDirPath)] } {
+      set dir_path $env(OasysRTL_CustomScriptDirPath)
+      if { $dir_path ne "" } {
+         set script [file join $dir_path or_${stage}.tcl]
+         if { [file exists $script] } {
+            set cmd "source $script"
+            set msg [list run custom script $script]
+            uplevel 1 [list run_cmd $cmd $msg]
+         }
+      }
+   }
+}
+
+# workaround to get a floating point number for area
+proc instanceArea {noMacros} {
+  set area [[::rt::design] instanceArea NULL $noMacros]
+  return [$rt::db squm $area]
+}
+
+
+if { [file isdirectory "gate_synthesis_or"] } {
+  puts "Note: Removing old directory gate_synthesis_or"
+  file delete -force -- "gate_synthesis_or"
+}
+set synth_path [file join "." "gate_synthesis_or" ]
+file mkdir ${synth_path}
+cd ${synth_path}
+
+# Source potential custom script
+source_custom_script initial
+
+## Configure technology settings
+if { [string match "16*" [get_parameter version]] } {
+  # From 16 onwards, read *.odb file in place of liberty files.
+  read_library [list /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm_nldm.lib ] -target_library tgt_lib
+  set_target_library tgt_lib
+  #read_lef [list /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm.lef]
+  read_lef /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm.lef
+} else {
+  read_library [list /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm_nldm.lib ] -target_library tgt_lib
+  set_target_library tgt_lib
+  #read_lef [list /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm.lef]
+  read_lef /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm.lef
+}
+## Exclude cells from synthesis
+set_dont_use {NangateOpenCellLibrary/CLKBUF_X1 NangateOpenCellLibrary/CLKBUF_X2 NangateOpenCellLibrary/CLKBUF_X3}
+
+## Define library WORK
+if { [file isdirectory "work"] } {
+  file delete -force -- "work"
+}
+puts "Note: Creating directory work"
+file mkdir "work"
+#puts "Note: Mapped design library WORK => work"
+run_cmd {read_verilog $RTL_TOOL_SCRIPT_DIR/concat_rtl.v} {analyze file 'concat_rtl.v'}
+# netlist_dependency_commands={{{read_verilog $RTL_TOOL_SCRIPT_DIR/concat_rtl.v} {analyze file 'concat_rtl.v'}}}
+# Source potential custom script
+source_custom_script analyze
+
+# clock gating is enabled
+report_clock_gating_options
+
+puts "-- Starting synthesis for design 'lenet'"
+##  Synthesize toplevel design
+synthesize -module lenet
+
+# Apply dont_touch to black-boxed RAMs
+set_dont_touch [get_cells -of_objects [get_designs ccs_ram_sync_1R1W*]]
+
+set doRetime 1
+## Apply SDC constraints
+read_sdc -echo $RTL_TOOL_SCRIPT_DIR/concat_rtl.v.or.sdc
+check_timing -verbose
+
+# Source potential custom script
+source_custom_script synthesis
+
+# Save optimization parameters
+set currDE [curr_design_effort prototype -details]
+# Set optimization parameters
+set_design_effort -prototype 0
+optimize -area
+puts "AWSINIT: [worst_slack]"
+optimize -virtual
+
+# 'retime' skipped due to no sequential components to retime
+
+## Optimize Design with placement information
+if {[lsearch -exact [ULicense_features] floorplan] >= 0} then {
+  if { [llength [get_cells -hier * -filter "is_hierarchical==false"]] >= 50 } {
+  create_chip -utilization 60 -aspect_ratio 1.0
+  }
+  optimize -place
+  optimize
+}
+# Restore parameters
+::utils::setMultipleParameters $currDE
+report_clocks
+report_path_groups
+report_area
+report_timing
+puts "AWS: [worst_slack]"
+puts "TNS: [total_negative_slack]"
+# Source potential custom script
+source_custom_script reports
+
+puts "-- Requested 3 fractional digits for design 'lenet' area"
+puts "-- Requested 3 fractional digits for design 'lenet' timing"
+puts "-- Requested 3 fractional digits for design 'lenet' capacitance"
+set oasys_ver [get_parameter version]
+puts "-- ToolID: '${oasys_ver}'"
+puts "-- Tool output delay factor to nS: 1.0"
+puts "-- Characterization mode: base "
+write_sdc understood.sdc
+
+puts "-- Synthesis area report for design 'lenet'"
+array set metrics [NDesS_keyedMetrics [NDbS_topDesign $::rt::db]]
+array set metrics_all $metrics(instances)
+array set metrics_lat $metrics(latches)
+array set metrics_reg $metrics(registers)
+set returnData(Area) [NDbS_squm $::rt::db $metrics_all(area)]
+set returnData(AreaSeq) [NDbS_squm $::rt::db [expr {$metrics_lat(area)+$metrics_reg(area)}]]
+set returnData(AreaComb) [NDbS_squm $::rt::db [expr {$metrics_all(area)-$metrics_lat(area)-$metrics_reg(area)}]]
+echo "Total Cell Area is $returnData(Area)"
+echo "Noncombinational Area is $returnData(AreaSeq)"
+echo "Combinational Area is $returnData(AreaComb)"
+puts "-- END Synthesis area report for design 'lenet'"
+
+report_parameters
+report_units
+report_clocks
+report_cells
+report_instances
+report_clock_gating -detail
+
+if { $enable_timing_reporting } {
+   puts "Timing reporting started "
+   set clk_candidates {0 INOUT clk clk 1 IN image_in_rsc_AWID image_in_rsc_AWID 1 IN image_in_rsc_AWADDR image_in_rsc_AWADDR 1 IN image_in_rsc_AWLEN image_in_rsc_AWLEN 1 IN image_in_rsc_AWSIZE image_in_rsc_AWSIZE 1 IN image_in_rsc_AWBURST image_in_rsc_AWBURST 1 IN image_in_rsc_AWLOCK image_in_rsc_AWLOCK 1 IN image_in_rsc_AWCACHE image_in_rsc_AWCACHE 1 IN image_in_rsc_AWPROT image_in_rsc_AWPROT 1 IN image_in_rsc_AWQOS image_in_rsc_AWQOS 1 IN image_in_rsc_AWREGION image_in_rsc_AWREGION 1 IN image_in_rsc_AWUSER image_in_rsc_AWUSER 1 IN image_in_rsc_AWVALID image_in_rsc_AWVALID 1 IN image_in_rsc_WDATA image_in_rsc_WDATA 1 IN image_in_rsc_WSTRB image_in_rsc_WSTRB 1 IN image_in_rsc_WLAST image_in_rsc_WLAST 1 IN image_in_rsc_WUSER image_in_rsc_WUSER 1 IN image_in_rsc_WVALID image_in_rsc_WVALID 1 IN image_in_rsc_BREADY image_in_rsc_BREADY 1 IN image_in_rsc_ARID image_in_rsc_ARID 1 IN image_in_rsc_ARADDR image_in_rsc_ARADDR 1 IN image_in_rsc_ARLEN image_in_rsc_ARLEN 1 IN image_in_rsc_ARSIZE image_in_rsc_ARSIZE 1 IN image_in_rsc_ARBURST image_in_rsc_ARBURST 1 IN image_in_rsc_ARLOCK image_in_rsc_ARLOCK 1 IN image_in_rsc_ARCACHE image_in_rsc_ARCACHE 1 IN image_in_rsc_ARPROT image_in_rsc_ARPROT 1 IN image_in_rsc_ARQOS image_in_rsc_ARQOS 1 IN image_in_rsc_ARREGION image_in_rsc_ARREGION 1 IN image_in_rsc_ARUSER image_in_rsc_ARUSER 1 IN image_in_rsc_ARVALID image_in_rsc_ARVALID 1 IN image_in_rsc_RREADY image_in_rsc_RREADY 1 IN image_in_rsc_tr_write_done image_in_rsc_tr_write_done 1 IN image_in_rsc_s_tdone image_in_rsc_s_tdone {} {} {}} 
+   set i_candidates {1 IN image_in_rsc_AWID image_in_rsc_AWID 1 IN image_in_rsc_AWADDR image_in_rsc_AWADDR 1 IN image_in_rsc_AWLEN image_in_rsc_AWLEN 1 IN image_in_rsc_AWSIZE image_in_rsc_AWSIZE 1 IN image_in_rsc_AWBURST image_in_rsc_AWBURST 1 IN image_in_rsc_AWLOCK image_in_rsc_AWLOCK 1 IN image_in_rsc_AWCACHE image_in_rsc_AWCACHE 1 IN image_in_rsc_AWPROT image_in_rsc_AWPROT 1 IN image_in_rsc_AWQOS image_in_rsc_AWQOS 1 IN image_in_rsc_AWREGION image_in_rsc_AWREGION 1 IN image_in_rsc_AWUSER image_in_rsc_AWUSER 1 IN image_in_rsc_AWVALID image_in_rsc_AWVALID 1 IN image_in_rsc_WDATA image_in_rsc_WDATA 1 IN image_in_rsc_WSTRB image_in_rsc_WSTRB 1 IN image_in_rsc_WLAST image_in_rsc_WLAST 1 IN image_in_rsc_WUSER image_in_rsc_WUSER 1 IN image_in_rsc_WVALID image_in_rsc_WVALID 1 IN image_in_rsc_BREADY image_in_rsc_BREADY 1 IN image_in_rsc_ARID image_in_rsc_ARID 1 IN image_in_rsc_ARADDR image_in_rsc_ARADDR 1 IN image_in_rsc_ARLEN image_in_rsc_ARLEN 1 IN image_in_rsc_ARSIZE image_in_rsc_ARSIZE 1 IN image_in_rsc_ARBURST image_in_rsc_ARBURST 1 IN image_in_rsc_ARLOCK image_in_rsc_ARLOCK 1 IN image_in_rsc_ARCACHE image_in_rsc_ARCACHE 1 IN image_in_rsc_ARPROT image_in_rsc_ARPROT 1 IN image_in_rsc_ARQOS image_in_rsc_ARQOS 1 IN image_in_rsc_ARREGION image_in_rsc_ARREGION 1 IN image_in_rsc_ARUSER image_in_rsc_ARUSER 1 IN image_in_rsc_ARVALID image_in_rsc_ARVALID 1 IN image_in_rsc_RREADY image_in_rsc_RREADY 1 IN image_in_rsc_tr_write_done image_in_rsc_tr_write_done 1 IN image_in_rsc_s_tdone image_in_rsc_s_tdone} 
+   set o_candidates {1 IN image_in_rsc_AWREADY image_in_rsc_AWREADY 1 IN image_in_rsc_WREADY image_in_rsc_WREADY 1 IN image_in_rsc_BID image_in_rsc_BID 1 IN image_in_rsc_BRESP image_in_rsc_BRESP 1 IN image_in_rsc_BUSER image_in_rsc_BUSER 1 IN image_in_rsc_BVALID image_in_rsc_BVALID 1 IN image_in_rsc_ARREADY image_in_rsc_ARREADY 1 IN image_in_rsc_RID image_in_rsc_RID 1 IN image_in_rsc_RDATA image_in_rsc_RDATA 1 IN image_in_rsc_RRESP image_in_rsc_RRESP 1 IN image_in_rsc_RLAST image_in_rsc_RLAST 1 IN image_in_rsc_RUSER image_in_rsc_RUSER 1 IN image_in_rsc_RVALID image_in_rsc_RVALID 2 OUT out_rsc_dat out_rsc_dat 1 IN image_in_rsc_triosy_lz image_in_rsc_triosy_lz 2 OUT out_rsc_triosy_lz out_rsc_triosy_lz} 
+   foreach { orsid orsmode iclk ote } $clk_candidates {
+   puts "Timing reporting for orsid=$orsid orsmode=$orsmode iclk=$iclk ote=$ote "
+      foreach { irsid irsmode iport ite } $i_candidates {
+         if { [llength [get_clocks -quiet $iclk] ] > 0 && [llength [all_registers -clock $iclk ] ] > 0 } {
+            puts "-- Synthesis input_to_register:timing report for design 'lenet' '${irsid}' '${irsmode}' port '${ite}' '${orsid}' '${orsmode}' CLOCK '${ote}'"
+            report_timing -from ${iport} -to [all_registers -data_pins -clock $iclk ] -format {cell arc_delay delay arrival edge net_load load fanout location} 
+            puts "-- END Synthesis input_to_register:timing report for design 'lenet' '${irsid}' '${irsmode}' port '${ite}' '${orsid}' '${orsmode}' CLOCK '${ote}'"
+         }
+      }
+   }
+   if { [llength [all_clocks] ] > 0 } {
+      puts "-- Synthesis register_to_register:timing report for design 'lenet'"
+      set from [all_registers -output_pins]
+      set to [all_registers -data_pins]
+      set delays(register_to_register) [lindex [get_p2p_delays -max_paths 1 -from $from -to $to] 0]
+      if {[llength $delays(register_to_register)]} then {
+        puts "Startpoint: [lindex $delays(register_to_register) 0]\n"
+        puts "Endpoint: [lindex $delays(register_to_register) 1]\n"
+        set returnData(R2RDelay) [lindex $delays(register_to_register) 2]
+        puts "DELAY=$returnData(R2RDelay)"
+        if {[lindex $delays(register_to_register) 3] ne {}} then {
+          set returnData(R2RSetup) [lindex $delays(register_to_register) 3]
+          puts "SETUP=$returnData(R2RSetup)"
+        }
+        if {[lindex $delays(register_to_register) 4] ne {}} then {
+          set returnData(Slack) [lindex $delays(register_to_register) 4]
+          puts "Slack: $returnData(Slack)"
+        }
+        unset returnData
+      }
+      unset delays to from
+      puts "-- END Synthesis register_to_register:timing report for design 'lenet'"
+   }
+
+   if { [llength [all_outputs] ] > 0 && [llength [all_clocks] ] > 0 } {
+      puts "-- Synthesis register_to_output:timing report for design 'lenet'"
+      set from [all_registers -output_pins]
+      set to [all_outputs]
+      set delays(register_to_output) [lindex [get_p2p_delays -max_paths 1 -from $from -to $to] 0]
+      if {[llength $delays(register_to_output)]} then {
+        puts "Startpoint: [lindex $delays(register_to_output) 0]\n"
+        puts "Endpoint: [lindex $delays(register_to_output) 1]\n"
+        set returnData(Delay) [lindex $delays(register_to_output) 2]
+        puts "DELAY=$returnData(Delay)"
+        if {[lindex $delays(register_to_output) 4] ne {}} then {
+          set returnData(Slack) [lindex $delays(register_to_output) 4]
+          puts "Slack: $returnData(Slack)"
+        }
+        unset returnData
+      }
+      unset delays to from
+      puts "-- END Synthesis register_to_output:timing report for design 'lenet'"
+   }
+
+   if { [llength [all_outputs] ] > 0 && [llength [all_inputs] ] > 0 } {
+      puts "-- Synthesis input_to_output:timing report for design 'lenet'"
+      set from [remove_from_collection [all_inputs] [get_attribute [all_clocks] sources]]
+      set to [all_outputs]
+      set delays(input_to_output) [lindex [get_p2p_delays -max_paths 1 -from $from -to $to] 0]
+      if {[llength $delays(input_to_output)]} then {
+        puts "Startpoint: [lindex $delays(input_to_output) 0]\n"
+        puts "Endpoint: [lindex $delays(input_to_output) 1]\n"
+        set returnData(Delay) [lindex $delays(input_to_output) 2]
+        puts "DELAY=$returnData(Delay)"
+        if {[lindex $delays(input_to_output) 4] ne {}} then {
+          set returnData(Slack) [lindex $delays(input_to_output) 4]
+          puts "Slack: $returnData(Slack)"
+        }
+        unset returnData
+      }
+      unset delays to from
+      puts "-- END Synthesis input_to_output:timing report for design 'lenet'"
+   }
+
+} else {
+   puts "Timing reporting turned off in the script "
+}
+if {$hls_status} {
+  puts "Warning: Check transcript for errors hls_status=$hls_status"
+}
+puts "[clock format [clock seconds] -format {%a %b %d %H:%M:%S %Z %Y}]"
+write_design /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/./gate.or.odb
+write_verilog /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/./gate.or.v.v
+write_sdc /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/./gate.or.v.sdc
+# Source potential custom script
+source_custom_script final
+
+cd ..
+
+puts "-- Synthesis finished for design 'lenet'"
+
+
+# Equivalent single command:
+# ::rt::libchar::characterize {CATAPULT_MGC_HOME /mnt/d/Ubuntu/Mgc_home char_mode base id_constraint p2p comb 0 rpt_fmt {cell arc_delay delay arrival edge net_load load fanout location} designName lenet moduleName lenet all_inputs {image_in_rsc_AWID image_in_rsc_AWADDR image_in_rsc_AWLEN image_in_rsc_AWSIZE image_in_rsc_AWBURST image_in_rsc_AWLOCK image_in_rsc_AWCACHE image_in_rsc_AWPROT image_in_rsc_AWQOS image_in_rsc_AWREGION image_in_rsc_AWUSER image_in_rsc_AWVALID image_in_rsc_WDATA image_in_rsc_WSTRB image_in_rsc_WLAST image_in_rsc_WUSER image_in_rsc_WVALID image_in_rsc_BREADY image_in_rsc_ARID image_in_rsc_ARADDR image_in_rsc_ARLEN image_in_rsc_ARSIZE image_in_rsc_ARBURST image_in_rsc_ARLOCK image_in_rsc_ARCACHE image_in_rsc_ARPROT image_in_rsc_ARQOS image_in_rsc_ARREGION image_in_rsc_ARUSER image_in_rsc_ARVALID image_in_rsc_RREADY image_in_rsc_tr_write_done image_in_rsc_s_tdone} all_outputs {image_in_rsc_AWREADY image_in_rsc_WREADY image_in_rsc_BID image_in_rsc_BRESP image_in_rsc_BUSER image_in_rsc_BVALID image_in_rsc_ARREADY image_in_rsc_RID image_in_rsc_RDATA image_in_rsc_RRESP image_in_rsc_RLAST image_in_rsc_RUSER image_in_rsc_RVALID out_rsc_dat image_in_rsc_triosy_lz out_rsc_triosy_lz} all_clocks clk RTL_TOOL_SCRIPT_DIR /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/. hls_search_path {} area_effort 1 timing_effort 1 hdlin_while_loop_iterations 10000 synthesis_dir gate_synthesis_or target_lib_name tgt_lib libs_no_odb /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm_nldm.lib libs_odb {} libs_lef /mnt/d/Ubuntu/Mgc_home/pkgs/siflibs/nangate/nangate45nm.lef libs_ptf {} libs_map {} dont_use_cells {NangateOpenCellLibrary/CLKBUF_X1 NangateOpenCellLibrary/CLKBUF_X2 NangateOpenCellLibrary/CLKBUF_X3} clock_gate_cells {} rtl_file /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/concat_rtl.v language verilog sdc_file /mnt/d/Ubuntu/CSE237C/dev/LeNet/lenet_cnn/Catapult/lenet.v56/concat_rtl.v.or.sdc clock_gating_min_width 4 scan_registers {} multi_stage_clock_gating false ff_control_nlports {clk rst} fraction_digits_a 3 fraction_digits_t 3 fraction_digits_c 3 time_factor 1.0 netlist_dependency_commands {{{{read_verilog $RTL_TOOL_SCRIPT_DIR/concat_rtl.v} {analyze file 'concat_rtl.v'}}}} entities_to_be_retimed {} floorplanParams {60 1.0} time_unit ns resizing_on 0 characterize 0 dont_retime 0 num_mpg_workers_local 0 use_zero_wireload 1}
