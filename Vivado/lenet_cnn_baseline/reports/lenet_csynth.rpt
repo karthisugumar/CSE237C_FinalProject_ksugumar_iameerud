@@ -1,0 +1,182 @@
+
+
+================================================================
+== Vivado HLS Report for 'lenet'
+================================================================
+* Date:           Thu Mar 19 22:50:01 2020
+
+* Version:        2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)
+* Project:        lenet_cnn
+* Solution:       solution_baseline
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.685|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +---------+---------+---------+---------+----------+
+    |      Latency      |      Interval     | Pipeline |
+    |   min   |   max   |   min   |   max   |   Type   |
+    +---------+---------+---------+---------+----------+
+    |  4087010|  4087010|  2830034|  2830034| dataflow |
+    +---------+---------+---------+---------+----------+
+
+    + Detail: 
+        * Instance: 
+        +---------------+------------+---------+---------+---------+---------+---------+
+        |               |            |      Latency      |      Interval     | Pipeline|
+        |    Instance   |   Module   |   min   |   max   |   min   |   max   |   Type  |
+        +---------------+------------+---------+---------+---------+---------+---------+
+        |softmax_SM_U0  |softmax_SM  |      322|      322|      322|      322|   none  |
+        |conv2d_C2_U0   |conv2d_C2   |  2830033|  2830033|  2830033|  2830033|   none  |
+        |conv2d_C1_U0   |conv2d_C1   |   551407|   551407|   551407|   551407|   none  |
+        |fc_FC1_U0      |fc_FC1      |   528361|   528361|   528361|   528361|   none  |
+        |fc_FC2_U0      |fc_FC2      |   111133|   111133|   111133|   111133|   none  |
+        |fc_FC3_U0      |fc_FC3      |     9271|     9271|     9271|     9271|   none  |
+        |maxpool_P1_U0  |maxpool_P1  |    21349|    21349|    21349|    21349|   none  |
+        |maxpool_P2_U0  |maxpool_P2  |     7393|     7393|     7393|     7393|   none  |
+        |relu_R1_U0     |relu_R1     |    19165|    19165|    19165|    19165|   none  |
+        |relu_R2_U0     |relu_R2     |     6753|     6753|     6753|     6753|   none  |
+        |relu_R3_U0     |relu_R3     |      481|      481|      481|      481|   none  |
+        |relu_R4_U0     |relu_R4     |      337|      337|      337|      337|   none  |
+        |flatten_F_U0   |flatten_F   |      993|      993|      993|      993|   none  |
+        +---------------+------------+---------+---------+---------+---------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|      2|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |      178|     30|    6075|  11973|    0|
+|Memory           |       50|      -|      64|      5|    0|
+|Multiplexer      |        -|      -|       -|      -|    -|
+|Register         |        -|      -|       -|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |      228|     30|    6139|  11980|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |       81|     13|       5|     22|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------+------------+---------+-------+------+------+-----+
+    |    Instance   |   Module   | BRAM_18K| DSP48E|  FF  |  LUT | URAM|
+    +---------------+------------+---------+-------+------+------+-----+
+    |conv2d_C1_U0   |conv2d_C1   |        3|      5|   846|  1591|    0|
+    |conv2d_C2_U0   |conv2d_C2   |        9|      5|   903|  1701|    0|
+    |fc_FC1_U0      |fc_FC1      |      129|      5|   562|   920|    0|
+    |fc_FC2_U0      |fc_FC2      |       33|      5|   538|   905|    0|
+    |fc_FC3_U0      |fc_FC3      |        2|      5|   569|   901|    0|
+    |flatten_F_U0   |flatten_F   |        0|      0|    91|   269|    0|
+    |maxpool_P1_U0  |maxpool_P1  |        0|      0|   234|   717|    0|
+    |maxpool_P2_U0  |maxpool_P2  |        0|      0|   234|   701|    0|
+    |relu_R1_U0     |relu_R1     |        0|      0|   198|   523|    0|
+    |relu_R2_U0     |relu_R2     |        0|      0|   195|   507|    0|
+    |relu_R3_U0     |relu_R3     |        0|      0|   157|   383|    0|
+    |relu_R4_U0     |relu_R4     |        0|      0|   157|   383|    0|
+    |softmax_SM_U0  |softmax_SM  |        2|      5|  1391|  2472|    0|
+    +---------------+------------+---------+-------+------+------+-----+
+    |Total          |            |      178|     30|  6075| 11973|    0|
+    +---------------+------------+---------+-------+------+------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +-----------+---------------+---------+----+----+-----+------+-----+------+-------------+
+    |   Memory  |     Module    | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +-----------+---------------+---------+----+----+-----+------+-----+------+-------------+
+    |C1_out_U   |lenet_C1_out   |       16|   0|   0|    0|  4704|   32|     2|       301056|
+    |R1_out_U   |lenet_C1_out   |       16|   0|   0|    0|  4704|   32|     2|       301056|
+    |C2_out_U   |lenet_C2_out   |        4|   0|   0|    0|  1600|   32|     2|       102400|
+    |R2_out_U   |lenet_C2_out   |        4|   0|   0|    0|  1600|   32|     2|       102400|
+    |FC1_out_U  |lenet_FC1_out  |        1|   0|   0|    0|   120|   32|     2|         7680|
+    |R3_out_U   |lenet_FC1_out  |        1|   0|   0|    0|   120|   32|     2|         7680|
+    |FC2_out_U  |lenet_FC2_out  |        1|   0|   0|    0|    84|   32|     2|         5376|
+    |R4_out_U   |lenet_FC2_out  |        1|   0|   0|    0|    84|   32|     2|         5376|
+    |FC3_out_U  |lenet_FC3_out  |        0|  64|   5|    0|    10|   32|     2|          640|
+    |P1_out_U   |lenet_P1_out   |        4|   0|   0|    0|  1176|   32|     2|        75264|
+    |P2_out_U   |lenet_P2_out   |        1|   0|   0|    0|   400|   32|     2|        25600|
+    |F_out_U    |lenet_P2_out   |        1|   0|   0|    0|   400|   32|     2|        25600|
+    +-----------+---------------+---------+----+----+-----+------+-----+------+-------------+
+    |Total      |               |       50|  64|   5|    0| 15002|  384|    24|       960128|
+    +-----------+---------------+---------+----+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------+----------+-------+---+----+------------+------------+
+    | Variable Name| Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |ap_idle       |    and   |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |Total         |          |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------+-----+-----+------------+--------------+--------------+
+|     RTL Ports     | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-------------------+-----+-----+------------+--------------+--------------+
+|ap_clk             |  in |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_rst             |  in |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_start           |  in |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_done            | out |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_ready           | out |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_idle            | out |    1| ap_ctrl_hs |     lenet    | return value |
+|image_in_address0  | out |   10|  ap_memory |   image_in   |     array    |
+|image_in_ce0       | out |    1|  ap_memory |   image_in   |     array    |
+|image_in_d0        | out |   32|  ap_memory |   image_in   |     array    |
+|image_in_q0        |  in |   32|  ap_memory |   image_in   |     array    |
+|image_in_we0       | out |    1|  ap_memory |   image_in   |     array    |
+|image_in_address1  | out |   10|  ap_memory |   image_in   |     array    |
+|image_in_ce1       | out |    1|  ap_memory |   image_in   |     array    |
+|image_in_d1        | out |   32|  ap_memory |   image_in   |     array    |
+|image_in_q1        |  in |   32|  ap_memory |   image_in   |     array    |
+|image_in_we1       | out |    1|  ap_memory |   image_in   |     array    |
+|out_r_address0     | out |    4|  ap_memory |     out_r    |     array    |
+|out_r_ce0          | out |    1|  ap_memory |     out_r    |     array    |
+|out_r_d0           | out |   32|  ap_memory |     out_r    |     array    |
+|out_r_q0           |  in |   32|  ap_memory |     out_r    |     array    |
+|out_r_we0          | out |    1|  ap_memory |     out_r    |     array    |
+|out_r_address1     | out |    4|  ap_memory |     out_r    |     array    |
+|out_r_ce1          | out |    1|  ap_memory |     out_r    |     array    |
+|out_r_d1           | out |   32|  ap_memory |     out_r    |     array    |
+|out_r_q1           |  in |   32|  ap_memory |     out_r    |     array    |
+|out_r_we1          | out |    1|  ap_memory |     out_r    |     array    |
++-------------------+-----+-----+------------+--------------+--------------+
+
