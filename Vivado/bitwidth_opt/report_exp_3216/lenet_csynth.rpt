@@ -1,0 +1,297 @@
+
+
+================================================================
+== Vivado HLS Report for 'lenet'
+================================================================
+* Date:           Thu Mar 19 11:26:35 2020
+
+* Version:        2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)
+* Project:        lenet_cnn3_Accuracy
+* Solution:       solution_exp_3216
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.719|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-------+-------+-------+-------+----------+
+    |    Latency    |    Interval   | Pipeline |
+    |  min  |  max  |  min  |  max  |   Type   |
+    +-------+-------+-------+-------+----------+
+    |  70409|  70409|  32058|  32058| dataflow |
+    +-------+-------+-------+-------+----------+
+
+    + Detail: 
+        * Instance: 
+        +-----------------+--------------+-------+-------+-------+-------+---------+
+        |                 |              |    Latency    |    Interval   | Pipeline|
+        |     Instance    |    Module    |  min  |  max  |  min  |  max  |   Type  |
+        +-----------------+--------------+-------+-------+-------+-------+---------+
+        |conv2d_C2_U0     |conv2d_C2     |  32057|  32057|  32057|  32057|   none  |
+        |conv2d_C1_U0     |conv2d_C1     |  16510|  16510|  16510|  16510|   none  |
+        |softmax_SM_U0    |softmax_SM    |     86|     86|     86|     86|   none  |
+        |fc_FC1_U0        |fc_FC1        |  12106|  12106|  12106|  12106|   none  |
+        |relu_R1_U0       |relu_R1       |   2356|   2356|   2356|   2356|   none  |
+        |fc_FC2_U0        |fc_FC2        |   5188|   5188|   5188|   5188|   none  |
+        |relu_R2_U0       |relu_R2       |    804|    804|    804|    804|   none  |
+        |fc_FC3_U0        |fc_FC3        |    876|    876|    876|    876|   none  |
+        |maxpool_P1_U0    |maxpool_P1    |   4715|   4715|   4715|   4715|   none  |
+        |maxpool_P1_1_U0  |maxpool_P1_1  |   1611|   1611|   1611|   1611|   none  |
+        |flatten_F_U0     |flatten_F     |    243|    243|    243|    243|   none  |
+        |relu_R3_U0       |relu_R3       |    123|    123|    123|    123|   none  |
+        |relu_R4_U0       |relu_R4       |     87|     87|     87|     87|   none  |
+        +-----------------+--------------+-------+-------+-------+-------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|    102|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |      170|    792|   64100|  40577|    0|
+|Memory           |       82|      -|    1344|    168|    0|
+|Multiplexer      |        -|      -|       -|    180|    -|
+|Register         |        -|      -|      20|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |      252|    792|   65464|  41027|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |       90|    360|      61|     77|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +-----------------+--------------+---------+-------+-------+-------+-----+
+    |     Instance    |    Module    | BRAM_18K| DSP48E|   FF  |  LUT  | URAM|
+    +-----------------+--------------+---------+-------+-------+-------+-----+
+    |conv2d_C1_U0     |conv2d_C1     |        6|    108|   8497|   4401|    0|
+    |conv2d_C2_U0     |conv2d_C2     |        8|    600|  39350|  19607|    0|
+    |fc_FC1_U0        |fc_FC1        |      120|     48|   3151|   1761|    0|
+    |fc_FC2_U0        |fc_FC2        |       32|     24|   1657|    965|    0|
+    |fc_FC3_U0        |fc_FC3        |        2|     12|    922|    582|    0|
+    |flatten_F_U0     |flatten_F     |        0|      0|    108|    499|    0|
+    |maxpool_P1_U0    |maxpool_P1    |        0|      0|    512|    941|    0|
+    |maxpool_P1_1_U0  |maxpool_P1_1  |        0|      0|    467|    875|    0|
+    |relu_R1_U0       |relu_R1       |        0|      0|   1408|   3259|    0|
+    |relu_R2_U0       |relu_R2       |        0|      0|    557|   1463|    0|
+    |relu_R3_U0       |relu_R3       |        0|      0|     77|    190|    0|
+    |relu_R4_U0       |relu_R4       |        0|      0|     77|    190|    0|
+    |softmax_SM_U0    |softmax_SM    |        2|      0|   7317|   5844|    0|
+    +-----------------+--------------+---------+-------+-------+-------+-----+
+    |Total            |              |      170|    792|  64100|  40577|    0|
+    +-----------------+--------------+---------+-------+-------+-------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +---------------+-------------------+---------+----+----+-----+------+-----+------+-------------+
+    |     Memory    |       Module      | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +---------------+-------------------+---------+----+----+-----+------+-----+------+-------------+
+    |C1_out_0_V_U   |lenet_C1_out_0_V   |       12|   0|   0|    0|  2352|   48|     2|       225792|
+    |C1_out_1_V_U   |lenet_C1_out_0_V   |       12|   0|   0|    0|  2352|   48|     2|       225792|
+    |C2_out_0_V_U   |lenet_C2_out_0_V   |        3|   0|   0|    0|   400|   48|     2|        38400|
+    |C2_out_1_V_U   |lenet_C2_out_0_V   |        3|   0|   0|    0|   400|   48|     2|        38400|
+    |C2_out_2_V_U   |lenet_C2_out_0_V   |        3|   0|   0|    0|   400|   48|     2|        38400|
+    |C2_out_3_V_U   |lenet_C2_out_0_V   |        3|   0|   0|    0|   400|   48|     2|        38400|
+    |FC1_out_0_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_1_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_2_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_3_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_4_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_5_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_6_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC1_out_7_V_U  |lenet_FC1_out_0_V  |        0|  96|  12|    0|    15|   48|     2|         1440|
+    |FC2_out_0_V_U  |lenet_FC2_out_0_V  |        0|  96|  16|    0|    21|   48|     2|         2016|
+    |FC2_out_1_V_U  |lenet_FC2_out_0_V  |        0|  96|  16|    0|    21|   48|     2|         2016|
+    |FC2_out_2_V_U  |lenet_FC2_out_0_V  |        0|  96|  16|    0|    21|   48|     2|         2016|
+    |FC2_out_3_V_U  |lenet_FC2_out_0_V  |        0|  96|  16|    0|    21|   48|     2|         2016|
+    |FC3_out_0_V_U  |lenet_FC3_out_0_V  |        0|  96|   4|    0|     5|   48|     2|          480|
+    |FC3_out_1_V_U  |lenet_FC3_out_0_V  |        0|  96|   4|    0|     5|   48|     2|          480|
+    |F_out_V_U      |lenet_F_out_V      |        3|   0|   0|    0|   400|   48|     2|        38400|
+    |P1_out_V_U     |lenet_P1_out_V     |        6|   0|   0|    0|  1176|   47|     2|       110544|
+    |P2_out_V_U     |lenet_P2_out_V     |        3|   0|   0|    0|   400|   47|     2|        37600|
+    |R1_out_V_U     |lenet_R1_out_V     |       24|   0|   0|    0|  4704|   47|     2|       442176|
+    |R2_out_V_U     |lenet_R2_out_V     |        6|   0|   0|    0|  1600|   47|     2|       150400|
+    |R3_out_V_U     |lenet_R3_out_V     |        2|   0|   0|    0|   120|   47|     2|        11280|
+    |R4_out_V_U     |lenet_R4_out_V     |        2|   0|   0|    0|    84|   47|     2|         7896|
+    +---------------+-------------------+---------+----+----+-----+------+-----+------+-------------+
+    |Total          |                   |       82|1344| 168|    0| 15002| 1290|    54|      1424024|
+    +---------------+-------------------+---------+----+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name           | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+    |ap_channel_done_C1_out_0_V         |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_C1_out_1_V         |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_C2_out_0_V         |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_C2_out_1_V         |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_C2_out_2_V         |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_C2_out_3_V         |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_0_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_1_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_2_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_3_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_4_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_5_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_6_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC1_out_7_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC2_out_0_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC2_out_1_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC2_out_2_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC2_out_3_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC3_out_0_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_FC3_out_1_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_idle                            |    and   |      0|  0|   2|           1|           1|
+    |conv2d_C1_U0_ap_continue           |    and   |      0|  0|   2|           1|           1|
+    |conv2d_C2_U0_ap_continue           |    and   |      0|  0|   2|           1|           1|
+    |fc_FC1_U0_ap_continue              |    and   |      0|  0|   2|           1|           1|
+    |fc_FC2_U0_ap_continue              |    and   |      0|  0|   2|           1|           1|
+    |fc_FC3_U0_ap_continue              |    and   |      0|  0|   2|           1|           1|
+    |relu_R1_U0_ap_start                |    and   |      0|  0|   2|           1|           1|
+    |relu_R2_U0_ap_start                |    and   |      0|  0|   2|           1|           1|
+    |relu_R3_U0_ap_start                |    and   |      0|  0|   2|           1|           1|
+    |relu_R4_U0_ap_start                |    and   |      0|  0|   2|           1|           1|
+    |softmax_SM_U0_ap_start             |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_C1_out_0_V   |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_C1_out_1_V   |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_C2_out_0_V   |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_C2_out_1_V   |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_C2_out_2_V   |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_C2_out_3_V   |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_0_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_1_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_2_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_3_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_4_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_5_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_6_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC1_out_7_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC2_out_0_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC2_out_1_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC2_out_2_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC2_out_3_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC3_out_0_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_FC3_out_1_V  |    or    |      0|  0|   2|           1|           1|
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                              |          |      0|  0| 102|          51|          51|
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------------------+----+-----------+-----+-----------+
+    |                  Name                 | LUT| Input Size| Bits| Total Bits|
+    +---------------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_channel_write_C1_out_0_V   |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_C1_out_1_V   |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_C2_out_0_V   |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_C2_out_1_V   |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_C2_out_2_V   |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_C2_out_3_V   |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_0_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_1_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_2_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_3_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_4_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_5_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_6_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC1_out_7_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC2_out_0_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC2_out_1_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC2_out_2_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC2_out_3_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC3_out_0_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_FC3_out_1_V  |   9|          2|    1|          2|
+    +---------------------------------------+----+-----------+-----+-----------+
+    |Total                                  | 180|         40|   20|         40|
+    +---------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------+---+----+-----+-----------+
+    |                  Name                 | FF| LUT| Bits| Const Bits|
+    +---------------------------------------+---+----+-----+-----------+
+    |ap_sync_reg_channel_write_C1_out_0_V   |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_C1_out_1_V   |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_C2_out_0_V   |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_C2_out_1_V   |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_C2_out_2_V   |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_C2_out_3_V   |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_0_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_1_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_2_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_3_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_4_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_5_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_6_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC1_out_7_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC2_out_0_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC2_out_1_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC2_out_2_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC2_out_3_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC3_out_0_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_FC3_out_1_V  |  1|   0|    1|          0|
+    +---------------------------------------+---+----+-----+-----------+
+    |Total                                  | 20|   0|   20|          0|
+    +---------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+--------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  | Source Object|    C Type    |
++---------------------+-----+-----+------------+--------------+--------------+
+|ap_clk               |  in |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_rst               |  in |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_start             |  in |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_done              | out |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_ready             | out |    1| ap_ctrl_hs |     lenet    | return value |
+|ap_idle              | out |    1| ap_ctrl_hs |     lenet    | return value |
+|image_in_V_address0  | out |   10|  ap_memory |  image_in_V  |     array    |
+|image_in_V_ce0       | out |    1|  ap_memory |  image_in_V  |     array    |
+|image_in_V_d0        | out |   48|  ap_memory |  image_in_V  |     array    |
+|image_in_V_q0        |  in |   48|  ap_memory |  image_in_V  |     array    |
+|image_in_V_we0       | out |    1|  ap_memory |  image_in_V  |     array    |
+|image_in_V_address1  | out |   10|  ap_memory |  image_in_V  |     array    |
+|image_in_V_ce1       | out |    1|  ap_memory |  image_in_V  |     array    |
+|image_in_V_d1        | out |   48|  ap_memory |  image_in_V  |     array    |
+|image_in_V_q1        |  in |   48|  ap_memory |  image_in_V  |     array    |
+|image_in_V_we1       | out |    1|  ap_memory |  image_in_V  |     array    |
+|out_V_address0       | out |    4|  ap_memory |     out_V    |     array    |
+|out_V_ce0            | out |    1|  ap_memory |     out_V    |     array    |
+|out_V_d0             | out |   48|  ap_memory |     out_V    |     array    |
+|out_V_q0             |  in |   48|  ap_memory |     out_V    |     array    |
+|out_V_we0            | out |    1|  ap_memory |     out_V    |     array    |
+|out_V_address1       | out |    4|  ap_memory |     out_V    |     array    |
+|out_V_ce1            | out |    1|  ap_memory |     out_V    |     array    |
+|out_V_d1             | out |   48|  ap_memory |     out_V    |     array    |
+|out_V_q1             |  in |   48|  ap_memory |     out_V    |     array    |
+|out_V_we1            | out |    1|  ap_memory |     out_V    |     array    |
++---------------------+-----+-----+------------+--------------+--------------+
+
