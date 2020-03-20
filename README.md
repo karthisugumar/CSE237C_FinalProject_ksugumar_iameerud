@@ -11,32 +11,30 @@ High Level Synthesis implementation of the [LeNet neural network](https://en.wik
 
 ## File structure
 ### Catapult
-- **lenet_cnn/**
-  - Catapult.ccs - setting up work directory for Catapult
-  - bias.h - setting pre-trained bias values
-  - catapult.log - entire log of terminal output
-  - catapult.pinfo - error file
-  - convolution.h - definition of convolution layer of lenet
-    - two functions - with and without zero padding (?)
-  - directives_127000.tcl - catapult project-level directives for various synthesis settings (including specifying target design)
+- **lenet_cnn_baseline/** - Contains the unoptimized version of LeNet
+  - **reports/** - Contains Area and Timing csv reports of Baseline design from Catapult
+  - bias.h - pre-trained bias values of LeNet
+  - convolution.h - definition of convolution layers of lenet
+    - with and without zero padding
+    - accepts variable kernel and image sizes
+    - works with different strides
   - expTable.h - table of exponent values
-  - fc.h - definition of fully connected layer of lenet
-    - three functions - (?)
-  - lenet.cpp - the main function - instantiation of the entire network, with convolution, activation, maxpooling and fully connected layers (please see the Lenet link above to undestand the structure)
-  - lenet.h - function prototypes for instantiations in lenet.cpp
-  - lenet_cnn.h - same as above (?)
-  - lenet_tb.cpp - testbench to check accuracy - checks if an (one) image is predicted correctly as its label
-  - lenet_tb_Accuracy.cpp - extension of the previous to a specifiable "test size" i.e. number of images
+  - fc.h - definition of fully connected layers of lenet
+  - lenet.cpp - Top-Level LeNet Function - instantiates layers from header files
+  - lenet.h - function prototypes, datatypes, and NN parameters
+  - lenet_tb.cpp - testbench to verify design with 1 input image from MNIST
   - pooling.h - definition of pooling layer - reduction of paramters / input size
-    - two functions (?)
-  - relu.h - definition of  layer - to introduce non-linearity in the network
-    - four functions (?)
-  - script.tcl - specifying project files to Catapult
-  - softmax.h - definition of softmax function (another activation) - using values from expTable.h above
-  - test_set_in_small.h - reduced set of images for testbench purposes
-  - test_set_out.dat - correct labels for images in previous file
-  - weights.h - setting weights for the LeNet network (pretrained) - this project deals with implementation of inference mode
-- **pics/** - screenshot snippets from Catapult showing design hierarchy, loops, initiation intervals, and iterations of the synthesis process
+  - relu.h - definition of  rectified linear unit layer
+  - script.tcl - sets up project and constraints. add files to project
+  - softmax.h - definition of softmax function - uses expTable.h
+  - weights.h - pre-trained weights of LeNet
+  - image*.dat - single image inputs
+
+- **lenet_cnn_opt/** - Contains optimized version of LeNet. Has similar structure as baseline but with optimized code
+  - **reports/** - Contains Area and Timing csv reports of Optimized design from Catapult
+  - directives.tcl - contains the list of directives applied in Catapult to achieve the final optimized design of LeNet
+ 
+ 
 ### Vivado
 - **Layers/** - every folder has its own directives.tcl (Vivado synthesis settings), log file, script.tcl (project file specification), and a **syn/** folder with a synthesis report and XML file
   - convolution/ - convolution layer (with 0 padding)
