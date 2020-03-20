@@ -10,31 +10,6 @@ High Level Synthesis implementation of the [LeNet neural network](https://en.wik
 - Jupyter Notebook(with TensorFlow) for Training, Evaluation, and Demo
 
 ## File structure
-- **Catapult/**
-  - **lenet_cnn_baseline/** - Contains the unoptimized version of LeNet
-    - **reports/** - Contains Area and Timing csv reports of Baseline design from Catapult
-    - bias.h - pre-trained bias values of LeNet
-    - convolution.h - definition of convolution layers of lenet
-      - with and without zero padding
-      - accepts variable kernel and image sizes
-      - works with different strides
-    - expTable.h - table of exponent values
-    - fc.h - definition of fully connected layers of lenet
-    - lenet.cpp - Top-Level LeNet Function - instantiates layers from header files
-    - lenet.h - function prototypes, datatypes, and NN parameters
-    - lenet_tb.cpp - testbench to verify design with 1 input image from MNIST
-    - pooling.h - definition of pooling layer - reduction of paramters / input size
-    - relu.h - definition of  rectified linear unit layer
-    - script.tcl - sets up project and constraints. add files to project
-    - softmax.h - definition of softmax function - uses expTable.h
-    - weights.h - pre-trained weights of LeNet
-    - image*.dat - single image inputs
-
-  - **lenet_cnn_opt/** - Contains optimized version of LeNet. Has similar structure as baseline but with optimized code
-    - **reports/** - Contains Area and Timing csv reports of Optimized design from Catapult
-    - directives.tcl - contains the list of directives applied in Catapult to achieve the final optimized design of LeNet
- 
- 
 - **Vivado/**
   - **Layers/** - contains optimized versions of all layers. every folder has its own script.tcl for setting up project, and a **syn/** folder with a synthesis report and XML file.
     - convolution/ - convolution layer(with zero padding)
@@ -71,15 +46,51 @@ High Level Synthesis implementation of the [LeNet neural network](https://en.wik
       - expTable_400.h - contains exponential lookup table with 400 resolution(not used due to low accuracy)
   - **\*.PNG** - snippets of synthesis reports of baseline and optimized designs from Vivado 
     
-### Walkthroughs
+    
+- **Catapult/**
+  - **lenet_cnn_baseline/** - Contains the unoptimized version of LeNet
+    - **reports/** - Contains Area and Timing csv reports of Baseline design from Catapult
+    - bias.h - pre-trained bias values of LeNet
+    - convolution.h - definition of convolution layers of lenet
+      - with and without zero padding
+      - accepts variable kernel and image sizes
+      - works with different strides
+    - expTable.h - table of exponent values
+    - fc.h - definition of fully connected layers of lenet
+    - lenet.cpp - Top-Level LeNet Function - instantiates layers from header files
+    - lenet.h - function prototypes, datatypes, and NN parameters
+    - lenet_tb.cpp - testbench to verify design with 1 input image from MNIST
+    - pooling.h - definition of pooling layer - reduction of paramters / input size
+    - relu.h - definition of  rectified linear unit layer
+    - script.tcl - sets up project and constraints. add files to project
+    - softmax.h - definition of softmax function - uses expTable.h
+    - weights.h - pre-trained weights of LeNet
+    - image*.dat - single image inputs
+
+  - **lenet_cnn_opt/** - Contains optimized version of LeNet. Has similar structure as baseline but with optimized code
+    - **reports/** - Contains Area and Timing csv reports of Optimized design from Catapult
+    - directives.tcl - contains the list of directives applied in Catapult to achieve the final optimized design of LeNet
+    
+    
 - **Demo/**
-  - LeNet.ipynb - Demo jupyter notebook running LeNet prediction on one image
-  - design_1_wrapper.bit - (?)
-  - design_1_wrapper.hwh - (?)
-  - image_<x>_in.dat - some actual images (in matrix form) from the MNIST database
+  - demo.ipynb - Jupyter notebook to run LeNet on PYNQ. Predicts several test samples and total runtime is measured to evaluate 10000 test images(Requires connection with PYNQ Z2) 
+  - LeNet_wrapper.bit - bitstream generated using optimized design
+  - LeNet_wrapper.hwh - hardware handoff file from Vivado
+  - testset_x.dat.npy - numpy file that contains 10000 testset images
+  - testset_y.dat.npy - numpy file that contains 10000 testset labels
+  - image_<x>_in.dat - some actual images(in vector from) from the MNIST database
+  - **synth/report/** - contains Vivado synthesis report for design with AXI4 interface used in demo
+
 - **python/**
-  - LeNet_NCHW2.h5 - (??)
-  - LeNet_Train2.ipynb - jupyter notebook running Lenet training (with tensorflow) and prediction on one image
-  -  _all the other files are similar jupyter notebooks running each layer of LeNet_ 
+  - LeNet_Train.ipynb - jupyter notebook to train Lenet(with tensorflow) and evaluation on testset
+  - LeNet_NCHW2.h5 - pretrained weights for LeNet(obtained from LeNet_Train.ipynb)
+  - \*_tb.ipynb - jupyter notebooks to generate necessary files for layer-wise and complete testbenches
+  - softmax_expTable.ipynb - jupyter notebook to generate exponential lookup table for softmax layer
+  - LeNet_extract_weights.ipynb - jupyter notebook to extract weights & biases of convolution and fc layers of LeNet. Essential for LeNet design.
+  - **data/** - contains all files dumped from above jupyter notebooks
+ 
+- **images/**
+  - contains images used in report and captured from tools while working on the project
+  
 ## Conclusion
 The LeNet network was implemented in C++, synthesized using two industry-leading tools, and mapped to a hardware descriptive language - with "hardware-friendly" optimizations to the code such as loop unrolling, memory partitioning, pipelining etc - using a number of directives and pragmas (some of which are specific to the tool).
