@@ -92,5 +92,12 @@ High Level Synthesis implementation of the [LeNet neural network](https://en.wik
 - **images/**
   - contains images used in report and captured from tools while working on the project
   
-## Conclusion
-The LeNet network was implemented in C++, synthesized using two industry-leading tools, and mapped to a hardware descriptive language - with "hardware-friendly" optimizations to the code such as loop unrolling, memory partitioning, pipelining etc - using a number of directives and pragmas (some of which are specific to the tool).
+## Usage
+### Vivado
+  1) Run "vivado_hls -f <script.tcl>" in vivado command prompt to create and setup the corresponding project. The command can be run to create any of the Vivado implementations
+  2) Run "vivado_hls -p  <project_name>" to open Vivado gui with the project ready to be simulated and synthesized
+  3) Timing and Area reports are automatically created for a solution during synthesis
+  
+### Catapult
+  1) Run "catapult -f <script.tcl> in bash to open Catapult gui, setup, analyze, and synthesize the project
+  2) Timing and Area reports can be exported as .csv files for all solutions within the project
