@@ -3,6 +3,12 @@
 High Level Synthesis implementation of the [LeNet neural network](https://en.wikipedia.org/wiki/LeNet) for recognition of handwritten digits, trained on the [MNIST database](http://yann.lecun.com/exdb/mnist/) (a large collection of images of handwritten digits). Xilinx Vivado HLS is used for developement and the design is targeted for a variant of the Xilinx Zynq 7000 FPGAs. A Mentor Graphics' Catapult HLS version of the design has also been implemented targeted for an Application-Specific IC.
 
 ![LeNet](images/lenet.gif)
+
+### LeNet Architecture
+![LeNet Architecture](images/lenet_arch.png)
+
+### HLS Output
+![LeNet HLS Output](images/LeNet.png)
   
 ## Prerequisites
 - Xilinx Vivado HLS - Design and Optimization
@@ -101,3 +107,8 @@ High Level Synthesis implementation of the [LeNet neural network](https://en.wik
 ### Catapult
   1) Run "catapult -f <script.tcl> in bash to open Catapult gui, setup, analyze, and synthesize the project
   2) Timing and Area reports can be exported as .csv files for all solutions within the project
+  
+## References
+  - http://yann.lecun.com/exdb/lenet/
+  - https://www.mentor.com/hls-lp/catapult-high-level-synthesis/
+  - https://www.xilinx.com/products/design-tools/vivado/integration/esl-design.html
