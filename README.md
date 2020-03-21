@@ -1,6 +1,6 @@
 # UCSD CSE 237C Winter '20 Final Project
 ## Neural Network with HLS
-High Level Synthesis implementation of the [LeNet neural network](https://en.wikipedia.org/wiki/LeNet) for recognition of handwritten digits, trained on the [MNIST database](http://yann.lecun.com/exdb/mnist/) (a large collection of images of handwritten digits). Xilinx Vivado HLS is used for developement and the design is targeted for a variant of the Xilinx Zynq 7000 FPGAs. A Mentor Graphics' Catapult HLS version of the design has also been implemented targeted for an Application-Specific IC.
+High Level Synthesis implementation of the [LeNet neural network](https://en.wikipedia.org/wiki/LeNet) for recognition of handwritten digits, trained on the [MNIST database](http://yann.lecun.com/exdb/mnist/) (a large collection of images of handwritten digits). Xilinx Vivado HLS is used for developement and the design is targeted for a variant of the Xilinx Zynq 7000 FPGAs. A Mentor Graphics' Catapult HLS version of the design has also been implemented targeting an Application-Specific IC.
 
 ![LeNet](images/lenet.gif)
 
