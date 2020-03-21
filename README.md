@@ -10,6 +10,12 @@ High Level Synthesis implementation of the [LeNet neural network](https://en.wik
 ### HLS Output
 ![LeNet HLS Output](images/LeNet.png)
   
+### Speedup Achieved
+| Tool | Baseline Throughput | Optimized Throughput |
+| :-------------:  | :-------------: | :-------------: |
+| Vivado HLS  |    |   |
+| Catapult HLS  |   |    |
+
 ## Prerequisites
 - Xilinx Vivado HLS - Design and Optimization
 - Mentor Catapult HLS - Design and Optimization
